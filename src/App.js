@@ -35,11 +35,46 @@ function App() {
       </header>
 
       <div className="menu">
-        <button>Category</button>
-        <button>Category</button>
-        <button>Category</button>
-        <button>Category</button>
+        <div className="filter">
+          <button>Category<i class="fas fa-angle-down"></i></button>
+          <ul>
+            <li>test</li>
+            <li>test</li>
+            <li>test</li>
+          </ul>
+          </div>
+        <div className="filter">
+          <button>date<i class="fas fa-angle-down"></i></button>
+          <ul>
+            <li>test</li>
+            <li>test</li>
+            <li>test</li>
+          </ul>
+          </div>
+        <div className="filter">
+          <button>smth<i class="fas fa-angle-down"></i></button>
+          <ul>
+            <li>test</li>
+            <li>test</li>
+            <li>test</li>
+          </ul>
+          </div>
+        <div className="filter">
+        <button>smth<i class="fas fa-angle-down"></i></button>
+        <ul>
+          <li>test</li>
+          <li>test</li>
+          <li>test</li>
+        </ul>
+        </div>
       </div>
+
+
+
+
+
+
+
       <main>
         <div className="side-events">
         <div>
