@@ -16,6 +16,9 @@ button {
 .filter {
   display: inline-block;
 }
+.filter ul {
+  list-style-type: none;
+}
 
 main {
 margin: 0;
@@ -24,16 +27,14 @@ display: flex;
 
 .side-events {
   flex:1;
-
   height: 800px;
   margin: 0;
-  border: 2px solid black;
+  border: 1px solid black;
 
 }
 
 .map-events {
   flex:4;
   padding: 0;
-
-  border: 2px solid black;
+  border: 1px solid black;
 }

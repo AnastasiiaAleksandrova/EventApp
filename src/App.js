@@ -1,5 +1,9 @@
 import React from 'react';
 import './App.css';
+import Map from './Map/Map';
+import AnyReactComponent from './Map/Map'
+
+
 
 function App() {
   return (
@@ -7,47 +11,40 @@ function App() {
       <header>
         <h1>Events map</h1>
       </header>
-
       <div className="menu">
         <div className="filter">
-          <button>Category<i class="fas fa-angle-down"></i></button>
+          <button>Category <i class="fas fa-angle-down"></i></button>
           <ul>
-            <li>test</li>
-            <li>test</li>
-            <li>test</li>
+            <li><input type="checkbox" name="vehicle" value="1" />test</li>
+            <li><input type="checkbox" name="vehicle" value="1" />test</li>
+            <li><input type="checkbox" name="vehicle" value="1" />test</li>
           </ul>
           </div>
         <div className="filter">
-          <button>date<i class="fas fa-angle-down"></i></button>
+          <button>date <i class="fas fa-angle-down"></i></button>
           <ul>
-            <li>test</li>
-            <li>test</li>
-            <li>test</li>
+            <li><input type="checkbox" name="vehicle" value="1" />test</li>
+            <li><input type="checkbox" name="vehicle" value="1" />test</li>
+            <li><input type="checkbox" name="vehicle" value="1" />test</li>
           </ul>
           </div>
         <div className="filter">
-          <button>smth<i class="fas fa-angle-down"></i></button>
+          <button>smth <i class="fas fa-angle-down"></i></button>
           <ul>
-            <li>test</li>
-            <li>test</li>
-            <li>test</li>
+            <li><input type="checkbox" name="#" value="1" />test</li>
+            <li><input type="checkbox" name="#" value="1" />test</li>
+            <li><input type="checkbox" name="#" value="1" />test</li>
           </ul>
           </div>
         <div className="filter">
-        <button>smth<i class="fas fa-angle-down"></i></button>
+        <button>smth <i class="fas fa-angle-down"></i></button>
         <ul>
-          <li>test</li>
-          <li>test</li>
-          <li>test</li>
+          <li><input type="checkbox" name="#" value="1" />test</li>
+          <li><input type="checkbox" name="#" value="1" />test</li>
+          <li><input type="checkbox" name="#" value="1" />test</li>
         </ul>
         </div>
       </div>
-
-
-
-
-
-
 
       <main>
         <div className="side-events">
@@ -57,7 +54,7 @@ function App() {
           I am image
         </div>
         <div className="map-events">
-          i am map
+          <Map />
         </div>
       </main>
 
