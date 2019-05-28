@@ -16,7 +16,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-           React is needed to be learn
+           Yes it is a pull, Go check laa
         </a>
       </header>
     </div>
