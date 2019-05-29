@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 
 
+
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 
@@ -92,6 +93,7 @@ function createMapOptions(maps) {
 
 
 
+
 class Map extends Component {
   static defaultProps = {
     center: {
@@ -102,36 +104,22 @@ class Map extends Component {
   };
 
 
-
   render() {
     return (
       // Important! Always set the container height explicitly
       <div style={{ height: '100vh', width: '100%' }}>
         <GoogleMapReact
+
           bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_API_KEY}}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
-          options={createMapOptions}
-
-
-
-  render() {
-    return (
-      // Important! Always set the container height explicitly
-      <div style={{ height: '798px', width: '100%' }}>
-        <GoogleMapReact
-          bootstrapURLKeys={{ key:'AIzaSyC505dBD4vPoZ8ToSq9KBqQCHSHXNAYRVM'}}
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
-
-        >
+          options={createMapOptions} >
           <AnyReactComponent
             lat={59.955413}
             lng={30.337844}
             text="My Marker"
           />
         </GoogleMapReact>
-
       </div>
     );
   }
