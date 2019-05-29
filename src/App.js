@@ -1,12 +1,7 @@
 import React from 'react';
 import './App.css';
 import Map from './Map/Map';
-<<<<<<< HEAD
 import AnyReactComponent from './Map/Map'
-=======
-
-
->>>>>>> 617868d1d1e83f17c7347ff918ff04a7c1da04df
 require('dotenv').config();
 
 
@@ -20,12 +15,6 @@ function App() {
   return (
     <div className="App">
 
-<<<<<<< HEAD
-=======
-
-<Map />
-
->>>>>>> 617868d1d1e83f17c7347ff918ff04a7c1da04df
       <header>
         <h1>Events map</h1>
       </header>

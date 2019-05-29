@@ -94,7 +94,6 @@ function createMapOptions(maps) {
 
 
 class Map extends Component {
-<<<<<<< HEAD
  static defaultProps = {
    center: {
      lat: 60.2019475,
@@ -123,36 +122,6 @@ class Map extends Component {
      </div>
    );
  }
-=======
-  static defaultProps = {
-    center: {
-      lat: 60.2019475,
-      lng: 24.9286974
-    },
-    zoom: 12
-  };
-
-
-  render() {
-    return (
-      // Important! Always set the container height explicitly
-      <div style={{ height: '100vh', width: '100%' }}>
-        <GoogleMapReact
-
-          bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_API_KEY}}
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
-          options={createMapOptions} >
-          <AnyReactComponent
-            lat={59.955413}
-            lng={30.337844}
-            text="My Marker"
-          />
-        </GoogleMapReact>
-      </div>
-    );
-  }
->>>>>>> 617868d1d1e83f17c7347ff918ff04a7c1da04df
 }
 
 export default Map;

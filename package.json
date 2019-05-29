@@ -4,11 +4,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.3.1",
-<<<<<<< HEAD
     "dotenv": "^8.0.0",
-=======
-
->>>>>>> 617868d1d1e83f17c7347ff918ff04a7c1da04df
     "google-map-react": "^1.1.4",
     "google-maps-react": "^2.0.2",
     "react": "^16.8.6",
