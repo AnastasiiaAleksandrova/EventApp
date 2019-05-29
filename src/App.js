@@ -2,18 +2,9 @@ import React from 'react';
 import './App.css';
 import Map from './Map/Map';
 
-
-
-
-
-
-
-
-
 function App() {
   return (
     <div className="App">
-
       <header>
         <h1>Events map</h1>
       </header>
@@ -51,7 +42,6 @@ function App() {
         </ul>
         </div>
       </div>
-
       <main>
         <div className="side-events">
         <div>
@@ -63,12 +53,9 @@ function App() {
           <Map />
         </div>
       </main>
-
       <footer>
         i am footer
       </footer>
-
-
     </div>
   );
 }
