@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
-
-
-
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 function createMapOptions(maps) {
@@ -90,9 +87,6 @@ function createMapOptions(maps) {
    }
  }
 
-
-
-
 class Map extends Component {
  static defaultProps = {
    center: {
@@ -101,7 +95,6 @@ class Map extends Component {
    },
    zoom: 12
  };
-
 
  render() {
    return (
