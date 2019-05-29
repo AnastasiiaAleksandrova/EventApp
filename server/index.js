@@ -16,7 +16,7 @@ app.get('/api/greeting', async (req, res, next) => {
    const name = req.query.name;
    const getEvents = () => {
     try {
-      return axios.get(`http://open-api.myhelsinki.fi/v1/events/${name}&limit=2`).then(response => flatted.stringify(response.data))
+      return axios.get(`http://open-api.myhelsinki.fi/v1/events/${name}`).then(response => flatted.stringify(response.data))
     }
     catch (error) {
       console.error('Axios error: ' + error)
