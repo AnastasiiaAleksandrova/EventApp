@@ -1,56 +1,44 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const pino = require('express-pino-logger')();
-
 const app = express();
-
-
-
+const port = 3001;
 const axios = require('axios');
-const flatted = require('flatted');
+//const flatted = require('flatted');
 
-
-
-app.get('/api/greeting', async (req, res, next) => {
- try {
-   const name = req.query.name;
-   const getEvents = () => {
-    try {
-      return axios.get(`http://open-api.myhelsinki.fi/v1/events/${name}`).then(response => flatted.stringify(response.data))
-    }
-    catch (error) {
-      console.error('Axios error: ' + error)
-    }
-   }
-   const events = await getEvents()
-   res.header("Access-Control-Allow-Origin", "*");
-   res.setHeader('Content-Type', 'application/json');
-
-
-   res.send({ greeting: `${events}` });
-   //res.json(JSON.parse(events));
- }
- catch (error) {
-   next(error)
- }
+app.use(function(req, res, next) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
 });
 
 
 
+app.get('/api/', (req, res) => {
+  let options = '';
+  for (let key in req.query) {
+    options += '&' + key + '=' + encodeURIComponent(req.query[key]);
+  }
 
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(pino);
-/*
-app.get('/api/greeting', (req, res) => {
-  const name = req.query.name || 'Her';
-  res.setHeader('Content-Type', 'application/json');
-  res.header("Access-Control-Allow-Origin", "*");
-  res.send({ greeting: `Hello ${name}!` });
+  axios.get('http://open-api.myhelsinki.fi/v1/events/?limit=5' + options)
+      .then(response => {
+        let result = getNeededInfo(response.data.data);
+        res.send(JSON.stringify(result))
+      })
+      .catch(err => console.log('All fucked up in server! ' + err));
+})
 
-  //res.send(JSON.stringify({ greeting: `Hello ${name}!` }));
-});*/
+function getNeededInfo(arr) {
+  let result = [];
+        for (let i = 0; i < arr.length; i++) {
+          let temp = {}
+          temp.name = arr[i].name.fi;
+          temp.description = arr[i].description.intro;
+          temp.location = {lat: arr[i].location.lat, lon: arr[i].location.lon};
+          result.push(temp);
+        }
+        //console.log(result);
+        return result;
+}
 
-app.listen(3001, () =>
-  console.log('Express server is running on localhost:3001')
-);
+
+app.listen(port, () => console.log('Server running in port: ' + port));
