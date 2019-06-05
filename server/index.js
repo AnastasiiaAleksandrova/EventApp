@@ -13,30 +13,39 @@ app.use(function(req, res, next) {
 
 
 app.get('/api/', (req, res) => {
-  let options = '';
+  console.log(req.query)
+  
+  let options = '?';
   for (let key in req.query) {
-    options += '&' + key + '=' + encodeURIComponent(req.query[key]);
+      if (options != '?') {
+        options += '&'
+      }
+      options += `${key}=${encodeURIComponent(req.query[key])}`
   }
+  
 
 
-  axios.get('http://open-api.myhelsinki.fi/v1/events/?limit=5' + options)
+  axios.get('http://open-api.myhelsinki.fi/v1/events/' + options)
       .then(response => {
         let result = getNeededInfo(response.data.data);
         res.send(JSON.stringify(result))
+       
       })
       .catch(err => console.log('All fucked up in server! ' + err));
+      
 })
 
 function getNeededInfo(arr) {
   let result = [];
         for (let i = 0; i < arr.length; i++) {
-          let temp = {}
+          let temp = {};
           temp.name = arr[i].name.fi;
+          // temp.img = arr[i].description.images[0].url;
           temp.description = arr[i].description.intro;
           temp.location = {lat: arr[i].location.lat, lon: arr[i].location.lon};
           result.push(temp);
         }
-        //console.log(result);
+        console.log(result);
         return result;
 }
 

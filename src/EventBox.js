@@ -1,5 +1,5 @@
 import React from 'react';
-import { isPatternLike } from '@babel/types';
+
 
 function EventBox(props) {
 
@@ -13,6 +13,7 @@ function EventBox(props) {
     return (
       <div className="EventBox" style={style}>
         <p>{props.name}</p>
+        <p>{props.img}</p>
         <p>{props.description}</p>
       </div>
     );
