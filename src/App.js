@@ -34,7 +34,7 @@ class App extends Component {
   }
 
   handleChange(event) {
-    let newFilter = new Object;
+    let newFilter = {};
     newFilter[event.target.name] = event.target.value;
     console.log(newFilter)
     this.setState({
