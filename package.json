@@ -8,10 +8,6 @@
     "dotenv": "^8.0.0",
     "google-map-react": "^1.1.4",
     "google-maps-react": "^2.0.2",
-<<<<<<< HEAD
-   
-=======
->>>>>>> 31c2b05d61616304aa3a0f2c82f08a8cf00d6d50
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.8",
     "react-dom": "^16.8.6",
