@@ -82,78 +82,73 @@ class App extends Component {
                   <div id='innerFormWrapper'>
                     <div>
                       <label>By type </label>
-                        <li>
-                          <label className="container">
-                            <RadioInput type="radio" name="filter_type" value="tags_search=Teatteri" onChange={this.handleChange}/>
-                            <input type="radio" name="filter_type" value="tags_search=Teatteri" onChange={this.handleChange}/>
-                            Teatteri
-                            <span class="checkmark"></span>
-                          </label>
-                        </li>
-                    <li>
-                      <label className="container">
-                        <RadioInput type="radio" name="filter_type" value="tags_search=music" onChange={this.handleChange}/>
-                        <input type="radio"  name="filter_type" value="tags_search=music" onChange={this.handleChange}/>
-                        Music
-                        <span class="checkmark"></span>
-                      </label>
-                    </li>
-                    <li>
-                      <label className="container">
-                        <input type="radio" name="radio" value="1" />
-                        Exhibitions
-                        <span class="checkmark"></span>
-                      </label>
-                    </li>
-                    <li>
-                      <label className="container">
-                        <input type="radio" name="radio" value="2" />
-                        Bars
-                        <span class="checkmark"></span>
-                      </label>
-                    </li>
-                    <li>
-                      <label className="container">
-                        <input type="radio" name="radio" value="3" />
-                        Casino
-                        <span class="checkmark"></span>
-                      </label>
-                    </li>
-                    <li>
-                      <label className="container">
-                        <input type="radio" name="radio" value="4" />
-                        Cheap Sluts
-                        <span class="checkmark"></span>
-                      </label>
-                    </li>
-                  </div>
-                  <div>
-                  <label>By language</label>
-                    <li>
-                      <label className="container">
-                        <RadioInput type="radio" name="filter_lang" value="language_filter=sv" onChange={this.handleChange} />
-                        <input type="radio" name="filter_lang" value="language_filter=sv" onChange={this.handleChange} />
-                        Swedish
-                        <span class="checkmark"></span>
-                      </label>
-                    </li>
-                    <li>
-                      <label className="container">
-                        <RadioInput name="filter_lang" value="language_filter=fi" onChange={this.handleChange} />
-                        <input type="radio" name="filter_lang" value="language_filter=fi" onChange={this.handleChange} />
-                        Finnish
-                        <span class="checkmark"></span>
-                      </label>
-                    </li>
-                    <li>
-                      <label className="container">
-                        <RadioInput type="radio" name="filter_lang" value="language_filter=en" onChange={this.handleChange} />
-                        <input type="radio" name="filter_lang" value="language_filter=en" onChange={this.handleChange} />
-                        English
-                        <span class="checkmark"></span>
-                      </label>
-                    </li>
-                  </div>
+                      <li>
+                        <label className="container">
+                          <RadioInput type="radio" name="filter_type" value="tags_search=Teatteri" onChange={this.handleChange}/>
+                          Teatteri
+                          <span class="checkmark"></span>
+                        </label>
+                      </li>
+                      <li>
+                        <label className="container">
+                          <RadioInput type="radio" name="filter_type" value="tags_search=music" onChange={this.handleChange}/>
+                          Music
+                          <span class="checkmark"></span>
+                        </label>
+                      </li>
+                      <li>
+                        <label className="container">
+                          <input type="radio" name="radio" value="1" />
+                          Exhibitions
+                          <span class="checkmark"></span>
+                        </label>
+                      </li>
+                      <li>
+                        <label className="container">
+                          <input type="radio" name="radio" value="2" />
+                          Bars
+                          <span class="checkmark"></span>
+                        </label>
+                      </li>
+                      <li>
+                        <label className="container">
+                          <input type="radio" name="radio" value="3" />
+                          Casino
+                          <span class="checkmark"></span>
+                        </label>
+                      </li>
+                      <li>
+                        <label className="container">
+                          <input type="radio" name="radio" value="4" />
+                          Cheap Sluts
+                          <span class="checkmark"></span>
+                        </label>
+                      </li>
+                    </div>
+                    <div>
+                    <label>By language</label>
+                      <li>
+                        <label className="container">
+                          <RadioInput type="radio" name="filter_lang" value="language_filter=sv" onChange={this.handleChange} />
+                          Swedish
+                          <span class="checkmark"></span>
+                        </label>
+                      </li>
+                      <li>
+                        <label className="container">
+                          <RadioInput name="filter_lang" value="language_filter=fi" onChange={this.handleChange} />
+                          Finnish
+                          <span class="checkmark"></span>
+                        </label>
+                      </li>
+                      <li>
+                        <label className="container">
+                          <RadioInput type="radio" name="filter_lang" value="language_filter=en" onChange={this.handleChange} />
+                          English
+                          <span class="checkmark"></span>
+                        </label>
+                      </li>
+                    </div>
                   </div>
                   <button onClick={this.handleSubmit}>Apply</button>
                   </form>
