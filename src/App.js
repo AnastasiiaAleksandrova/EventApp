@@ -26,12 +26,12 @@ class App extends Component {
 
   getEvents() {
     axios.get(`http://localhost:3001/api/?${this.state.limit}&${this.state.filter_type}&${this.state.filter_lang}`)
-      .then(result => {
-        this.setState(state => {
-          state.data = result.data;
-          return state;
-        });
+    .then(result => {
+      this.setState(state => {
+        state.data = result.data;
+        return state;
       });
+    });
   }
 
   handleSubmit(event) {
@@ -44,21 +44,14 @@ class App extends Component {
     newFilter[event.target.name] = event.target.value;
     this.setState({
       ...this.state, ...newFilter
-   });
-
-   }
+    });
+  }
 
   componentDidMount() {
     this.getEvents();
   }
 
   render() {
-
-    /*const eventsByType = this.state.eventsByType.map((element, index) => {
-      return (
-        <FilterByType key = {element.id}/>
-      )
-    })*/
 
     console.log(this.state)
     if (!this.state.data) {
@@ -75,93 +68,90 @@ class App extends Component {
         <nav>
           <ul className='main-menu'>
             <li className = 'mainMenuElement'>Events by type
-
-                {/*}{eventsByType}*/}
-                <div class='sub-menu'>
-                <form>
-                  <div id='innerFormWrapper'>
-                    <div>
-                      <label>By type </label>
-                      <li>
-                        <label className="container">
-                          <RadioInput type="radio" name="filter_type" value="tags_search=Teatteri" onChange={this.handleChange}/>
-                          Teatteri
-                          <span class="checkmark"></span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="container">
-                          <RadioInput type="radio" name="filter_type" value="tags_search=music" onChange={this.handleChange}/>
-                          Music
-                          <span class="checkmark"></span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="container">
-                          <input type="radio" name="radio" value="1" />
-                          Exhibitions
-                          <span class="checkmark"></span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="container">
-                          <input type="radio" name="radio" value="2" />
-                          Bars
-                          <span class="checkmark"></span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="container">
-                          <input type="radio" name="radio" value="3" />
-                          Casino
-                          <span class="checkmark"></span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="container">
-                          <input type="radio" name="radio" value="4" />
-                          Cheap Sluts
-                          <span class="checkmark"></span>
-                        </label>
-                      </li>
-                    </div>
-                    <div>
-                    <label>By language</label>
-                      <li>
-                        <label className="container">
-                          <RadioInput type="radio" name="filter_lang" value="language_filter=sv" onChange={this.handleChange} />
-                          Swedish
-                          <span class="checkmark"></span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="container">
-                          <RadioInput name="filter_lang" value="language_filter=fi" onChange={this.handleChange} />
-                          Finnish
-                          <span class="checkmark"></span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="container">
-                          <RadioInput type="radio" name="filter_lang" value="language_filter=en" onChange={this.handleChange} />
-                          English
-                          <span class="checkmark"></span>
-                        </label>
-                      </li>
-                    </div>
+              <div class='sub-menu'>
+              <form>
+                <div id='innerFormWrapper'>
+                  <div>
+                    <label>By type </label>
+                    <li>
+                      <label className="container">
+                        <RadioInput type="radio" name="filter_type" value="tags_search=Teatteri" onChange={this.handleChange}/>
+                        Teatteri
+                        <span class="checkmark"></span>
+                      </label>
+                    </li>
+                    <li>
+                      <label className="container">
+                        <RadioInput type="radio" name="filter_type" value="tags_search=music" onChange={this.handleChange}/>
+                        Music
+                        <span class="checkmark"></span>
+                      </label>
+                    </li>
+                    <li>
+                      <label className="container">
+                        <input type="radio" name="radio" value="1" />
+                        Exhibitions
+                        <span class="checkmark"></span>
+                      </label>
+                    </li>
+                    <li>
+                      <label className="container">
+                        <input type="radio" name="radio" value="2" />
+                        Bars
+                        <span class="checkmark"></span>
+                      </label>
+                    </li>
+                    <li>
+                      <label className="container">
+                        <input type="radio" name="radio" value="3" />
+                        Casino
+                        <span class="checkmark"></span>
+                      </label>
+                    </li>
+                    <li>
+                      <label className="container">
+                        <input type="radio" name="radio" value="4" />
+                        Cheap Sluts
+                        <span class="checkmark"></span>
+                      </label>
+                    </li>
                   </div>
-                  <button onClick={this.handleSubmit}>Apply</button>
-                  </form>
+                  <div>
+                  <label>By language</label>
+                    <li>
+                      <label className="container">
+                        <RadioInput type="radio" name="filter_lang" value="language_filter=sv" onChange={this.handleChange} />
+                        Swedish
+                        <span class="checkmark"></span>
+                      </label>
+                    </li>
+                    <li>
+                      <label className="container">
+                        <RadioInput name="filter_lang" value="language_filter=fi" onChange={this.handleChange} />
+                        Finnish
+                        <span class="checkmark"></span>
+                      </label>
+                    </li>
+                    <li>
+                      <label className="container">
+                        <RadioInput type="radio" name="filter_lang" value="language_filter=en" onChange={this.handleChange} />
+                        English
+                        <span class="checkmark"></span>
+                      </label>
+                    </li>
+                  </div>
                 </div>
-
+                <button onClick={this.handleSubmit}>Apply</button>
+                </form>
+              </div>
             </li>
-            {/*<li className = 'mainMenuElement'>Events by date
-              <ul class='sub-menu'>
-                {eventsByDate}
-              </ul>
-            </li>*/}
           </ul>
+          <div class='newMapHolder'>
+            <div></div>
+            <Map />
+          </div>
         </nav>
+
         <main>
           <div id='grid'>
             <div className='side-events'>
@@ -176,10 +166,10 @@ class App extends Component {
                     )
                   })
                  }
-            </div>
+              </div>
             </div>
             <div className='map-events'>
-              <Map />
+              {/*<Map />*/}
             </div>
             {/*<div className='side-events'>
             </div> */}

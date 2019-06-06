@@ -124,6 +124,7 @@ nav ul {
   width: 18.75em;
   padding: 0.6em 0 0 1.75em;
   font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
 }
 
 .main-menu li:hover .sub-menu {
@@ -135,6 +136,7 @@ nav ul {
   display: none;
   top: 0.687em;
   background-color: #fff;
+  font-weight: 400;
   border: 1px #e2e2e2 solid;
   border-top: #fff solid;
   border-radius: 0 0 2px 2px;
@@ -148,10 +150,23 @@ display: flex;
   /* display: inline-block; */
 }
 
+.newMapHolder{
+/* position: fixed; */
+background-color: #fff;
+top: 340px;
+left: 0;
+width: 100%;
+height: 0;
+display: grid;
+grid-template-columns: 30% 70%;
+}
+
 main {
-  position: sticky;
-  min-height: 180%;
-  /* height: 100px; */
+  height: 100%;
+}
+
+.map-events{
+min-height: 100%;
 }
 
 #grid {
@@ -162,17 +177,21 @@ main {
 }
 
 .side-events {
-  position: sticky;
+  position: relative;
   top: 0;
   background-color: #fff;
 }
 
-main {
-
+.EventBox{
+  margin: 0.625em 0.625em 0.625em 0;
+  border: 1px #e2e2e2 solid;
+  border-radius: 2px;
 }
 
 footer {
+position: relative;
   width: 100%;
-  height: 150px;
+  height: 100px;
   background-color: #e2e2e2;
+  z-index: 9999;
 }
