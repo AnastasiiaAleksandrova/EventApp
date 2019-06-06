@@ -132,7 +132,7 @@ nav ul {
 
 .sub-menu {
   position: relative;
-  display: block;
+  display: none;
   top: 0.687em;
   background-color: #fff;
   border: 1px #e2e2e2 solid;
