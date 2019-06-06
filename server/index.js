@@ -39,10 +39,10 @@ function getNeededInfo(arr) {
   let result = [];
         for (let i = 0; i < arr.length; i++) {
           let temp = {};
-          temp.name = arr[i].name.fi;
-          // temp.img = arr[i].description.images[0].url;
-          temp.description = arr[i].description.intro;
-          temp.location = {lat: arr[i].location.lat, lon: arr[i].location.lon};
+          temp.name = arr[i].name;
+          temp.description = arr[i].description;
+          temp.location = arr[i].location;
+          temp.dates = arr[i].event_dates;
           result.push(temp);
         }
         console.log(result);

@@ -6,15 +6,16 @@ function EventBox(props) {
     const style = {
       padding: ".5em",
       margin: ".1em",
-      backgroundColor: "pink",
+      border: "1px solid grey",
+      borderRadius: "3px",
       display: "block"
     }
   
     return (
       <div className="EventBox" style={style}>
-        <p>{props.name}</p>
-        <p>{props.img}</p>
-        <p>{props.description}</p>
+        <div className="eventName">{props.name}</div>
+        <div className="eventAddress">{props.address}</div>
+        <div className="eventIntro">{props.intro}</div>
       </div>
     );
   }

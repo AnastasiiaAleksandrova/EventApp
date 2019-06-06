@@ -25,7 +25,12 @@ class App extends Component {
 
   getEvents() {
     axios.get(`http://localhost:3001/api/?${this.state.limit}&${this.state.filter_type}&${this.state.filter_lang}`)
-      .then(result => this.setState(result));
+      .then(result => {
+        this.setState(state => {
+          state.data = result.data;
+          return state;
+        });
+      });
   }
 
   handleSubmit(event) {
@@ -36,7 +41,6 @@ class App extends Component {
   handleChange(event) {
     let newFilter = {};
     newFilter[event.target.name] = event.target.value;
-    console.log(newFilter)
     this.setState({
       ...this.state, ...newFilter
    });
@@ -73,7 +77,11 @@ class App extends Component {
           <div>
             {this.state.data.map((el, index) => {
               return(
-                  <EventBox key={index} name={el.name} img={el.img} description={el.description} />
+                  <EventBox
+                    key={index}
+                    name={el.name.fi}
+                    address={el.location.address.street_address}
+                    intro={el.description.intro} />
               )
             }) }
             </div>
