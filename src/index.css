@@ -1,10 +1,178 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: 'Domine';
+  src: local('Domine') url('./fonts/Domine-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
+@font-face {
+  font-family: 'Montserrat SemiBold';
+  src: local('Montserrat SemiBold') url('./fonts/Montserrat-SemiBold.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
 
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+html, body, #root, .App {
+  position: relative;
+  width: 100%;
+}
+
+html, body {
+  min-height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 18.75em;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  filter: brightness(0.5);
+  background-size: cover;
+}
+
+#logo-holder{
+  width: 100%;
+  height: 0;
+}
+
+#logo-holder span{
+  color: #b4c92b;
+}
+
+#logo{
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2em;
+  font-weight: 600;
+  color: white;
+}
+
+#sub-logo {
+  position: absolute;
+  top: 5em;
+  left: 2.1em;
+  font-family: 'Hind', serif;
+  font-size: 1em;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  color: white;
+}
+
+/* filterHolder */
+nav {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 2.5em;
+  background-color: #b4c92b;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: nowrap;
+  position: relative;
+  justify-content: flex-start;
+}
+
+.container {
+  display: block;
+  position: relative;
+  position: relative;
+  margin-bottom: 0.75em;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.container:first-child {
+  margin-top: 0.75em;
+}
+
+.main-menu {
+  height: 100%;
+  padding: 0;
+}
+
+.main-menu, .sub-menu {
+  list-style: none;
+  margin: 0;
+}
+
+.mainMenuElement {
+  display: block;
+  /* margin: 0 auto; */
+  width: 18.75em;
+  padding: 0.6em 0 0 1.75em;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.main-menu li:hover .sub-menu {
+  display: flex;
+}
+
+.sub-menu {
+  position: relative;
+  display: block;
+  top: 0.687em;
+  background-color: #fff;
+  border: 1px #e2e2e2 solid;
+  border-top: #fff solid;
+  border-radius: 0 0 2px 2px;
+}
+
+#innerFormWrapper{
+display: flex;
+}
+
+.sub-menu li{
+  /* display: inline-block; */
+}
+
+main {
+  position: sticky;
+  min-height: 180%;
+  /* height: 100px; */
+}
+
+#grid {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  /* grid-template-columns: repeat(auto-fit, minmax(12.5em, auto)); */
+  /* gap: 15px 15px; */
+}
+
+.side-events {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+}
+
+main {
+
+}
+
+footer {
+  width: 100%;
+  height: 150px;
+  background-color: #e2e2e2;
+}
