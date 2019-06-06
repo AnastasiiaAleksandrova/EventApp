@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
 import './App.css';
 import Map from './Map/Map';
-import EventBox from './EventBox.js';
-import RadioInput from './RadioInput.js';
+import RadioInput from './RadioInput';
+import EventBox from './EventBox';
 import axios from 'axios';
-
-
 
 class App extends Component {
   constructor(props) {
