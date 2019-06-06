@@ -1,65 +1,75 @@
-import React from 'react';
-import './App.css';
+import React, {Component} from 'react';
 import Map from './Map/Map';
+import Header from './Header/Header';
+import FilterByType from './Filters/FilterByType';
+import FilterByDate from './Filters/FilterByDate';
 
-function App() {
-  return (
-    <div className="App">
-      <header>
-        <h1>Events map</h1>
-      </header>
-      <div className="menu">
-        <div className="filter">
-          <button>Category <i class="fas fa-angle-down"></i></button>
-          <ul>
-            <li><input type="checkbox" name="vehicle" value="1" />test</li>
-            <li><input type="checkbox" name="vehicle" value="1" />test</li>
-            <li><input type="checkbox" name="vehicle" value="1" />test</li>
-          </ul>
+class App extends Component {
+
+  constructor (props){
+    super(props)
+    this.state = {
+      eventsByType: [
+        {id: 1},
+      ],
+      eventsByDate: [
+        {id: 1},
+      ],
+    }
+  }
+
+  render() {
+
+    const eventsByType = this.state.eventsByType.map((element, index) => {
+      return (
+        <FilterByType key = {element.id}/>
+      )
+    })
+
+    const eventsByDate = this.state.eventsByDate.map((element, index) => {
+      return (
+        <FilterByDate key = {element.id}/>
+      )
+    })
+
+    return (
+      <div className='App'>
+        <Header />
+        <div id='logo-holder'>
+          <h1 id='logo'><span>in</span>HELSINKI</h1>
+          <p id='sub-logo'>ESSENTIAL CITY GUIDE</p>
         </div>
-        <div className="filter">
-          <button>date <i class="fas fa-angle-down"></i></button>
-          <ul>
-            <li><input type="checkbox" name="vehicle" value="1" />test</li>
-            <li><input type="checkbox" name="vehicle" value="1" />test</li>
-            <li><input type="checkbox" name="vehicle" value="1" />test</li>
+        <nav>
+          <ul className='main-menu'>
+            <li className = 'mainMenuElement'>Events by type
+
+                {eventsByType}
+                
+            </li>
+            {/*<li className = 'mainMenuElement'>Events by date
+              <ul class='sub-menu'>
+                {eventsByDate}
+              </ul>
+            </li>*/}
           </ul>
-        </div>
-        <div className="filter">
-          <button>smth <i class="fas fa-angle-down"></i></button>
-          <ul>
-            <li><input type="checkbox" name="#" value="1" />test</li>
-            <li><input type="checkbox" name="#" value="1" />test</li>
-            <li><input type="checkbox" name="#" value="1" />test</li>
-          </ul>
-        </div>
-        <div className="filter">
-          <button>smth <i class="fas fa-angle-down"></i></button>
-          <ul>
-            <li><input type="checkbox" name="#" value="1" />test</li>
-            <li><input type="checkbox" name="#" value="1" />test</li>
-            <li><input type="checkbox" name="#" value="1" />test</li>
-          </ul>
-        </div>
+        </nav>
+        <main>
+          <div id='grid'>
+            <div className='side-events'>
+            </div>
+            <div className='map-events'>
+              <Map />
+            </div>
+            {/*<div className='side-events'>
+            </div> */}
+          </div>
+        </main>
+        <footer>
+          dfgdfgdgdfgdfgdfgdfgdfgdfgdfgdf
+        </footer>
       </div>
-      <main>
-        <div className="side-events">
-          <div>
-            I am image
-          </div>
-          <div>
-            I am image
-          </div>
-        </div>
-        <div className="map-events">
-          <Map />
-        </div>
-      </main>
-      <footer>
-        i am footer
-      </footer>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
