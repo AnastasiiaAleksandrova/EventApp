@@ -1,107 +1,102 @@
 import React, {Component} from 'react';
 import './App.css';
 import Map from './Map/Map';
-import AnyReactComponent from './Map/Map'
+import EventBox from './EventBox.js';
+import RadioInput from './RadioInput.js';
+import axios from 'axios';
+
 
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      greeting: ''
-    };
+      data: null,
+      limit: 'limit=10',
+      load_from: '', 
+      filter_type: '',
+      filter_lang: ''
+    }
+    
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.getEvents = this.getEvents.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({ name: event.target.value });
-    console.log(this.state.name);
+  getEvents() {
+    axios.get(`http://localhost:3001/api/?${this.state.limit}&${this.state.filter_type}&${this.state.filter_lang}`)
+      .then(result => {
+        this.setState(state => {
+          state.data = result.data;
+          return state;
+        });
+      });
   }
 
   handleSubmit(event) {
-   event.preventDefault();
-   fetch(`http://localhost:3001/api/greeting?name=${encodeURIComponent(this.state.name)}`)
-     .then(response => response.json())
-     .then(state => this.setState(state));
+    event.preventDefault();
+    this.getEvents()
+  }
 
- }
+  handleChange(event) {
+    let newFilter = {};
+    newFilter[event.target.name] = event.target.value;
+    this.setState({
+      ...this.state, ...newFilter
+   });
+     
+   }
+
+  componentDidMount() {
+    this.getEvents();
+  }
 
   render() {
-  return (
+    console.log(this.state)
+    if (!this.state.data) {
+      return null;
+    }
 
-    <div className="App">
+    return (
+      <div className="App">
+        <main>
+          <form>
+            
+            <RadioInput name="filter_type" value="tags_search=Teatteri" onChange={this.handleChange} />Teatteri<br/>
+            <RadioInput name="filter_type" value="tags_search=music" onChange={this.handleChange} />Music<br/>
+            
+            
+            <RadioInput name="filter_lang" value="language_filter=sv" onChange={this.handleChange} />Swedish<br/>
+            <RadioInput name="filter_lang" value="language_filter=en" onChange={this.handleChange} />English<br/>
+            <RadioInput name="filter_lang" value="language_filter=fi" onChange={this.handleChange} />Finnish<br/>
+            
+            
+            
+            <button onClick={this.handleSubmit}>GO!</button>
+          </form>
+          <div>
+            {this.state.data.map((el, index) => {
+              return(
+                  <EventBox
+                    key={index}
+                    name={el.name.fi}
+                    address={el.location.address.street_address}
+                    intro={el.description.intro} />
+              )
+            }) }
+            </div>
+            
+            
+            <div className="map-events">
+              <Map />
+            </div>
+        </main>
 
-     <header>
-       <h1>Events map</h1>
-     </header>
-     <div className="menu">
-       <div className="filter">
-         <button>Category <i class="fas fa-angle-down"></i></button>
-         <ul>
-           <li><input type="checkbox" name="vehicle" value="1" />test</li>
-           <li><input type="checkbox" name="vehicle" value="1" />test</li>
-           <li><input type="checkbox" name="vehicle" value="1" />test</li>
-         </ul>
-         </div>
-       <div className="filter">
-         <button>date <i class="fas fa-angle-down"></i></button>
-         <ul>
-           <li><input type="checkbox" name="vehicle" value="1" />test</li>
-           <li><input type="checkbox" name="vehicle" value="1" />test</li>
-           <li><input type="checkbox" name="vehicle" value="1" />test</li>
-         </ul>
-         </div>
-       <div className="filter">
-         <button>smth <i class="fas fa-angle-down"></i></button>
-         <ul>
-           <li><input type="checkbox" name="#" value="1" />test</li>
-           <li><input type="checkbox" name="#" value="1" />test</li>
-           <li><input type="checkbox" name="#" value="1" />test</li>
-         </ul>
-         </div>
-       <div className="filter">
-       <button>smth <i class="fas fa-angle-down"></i></button>
-       <ul>
-         <li><input type="checkbox" name="#" value="1" />test</li>
-         <li><input type="checkbox" name="#" value="1" />test</li>
-         <li><input type="checkbox" name="#" value="1" />test</li>
-       </ul>
-       </div>
-     </div>
-
-     <main>
-       <div className="side-events">
-       <div className="Testing">
-
-           <form onSubmit={this.handleSubmit}>
-             <label htmlFor="name">Enter your name: </label>
-             <input
-               id="name"
-               type="text"
-               value={this.state.name}
-               onChange={this.handleChange}
-             />
-
-             <button type="submit">Submit</button>
-           </form>
-
-           <p>{this.state.greeting}</p>
-
-
-       </div>
-       </div>
-       <div className="map-events">
-         <Map />
-       </div>
-     </main>
-
-     <footer>
-       i am footer
-     </footer>
-</div>
-  );
-}
+        <footer>
+          i am footer
+        </footer>
+      </div>
+      );
+    }
 }
 export default App;
