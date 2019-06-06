@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Map from './Map/Map';
 import Header from './Header/Header';
-import FilterByType from './Filters/FilterByType';
 import RadioInput from './RadioInput';
 import EventBox from './EventBox';
 import axios from 'axios';
@@ -13,7 +12,7 @@ class App extends Component {
     this.state = {
       data: null,
       limit: 'limit=10',
-      load_from: '', 
+      load_from: '',
       filter_type: '',
       filter_lang: '',
       eventsByType: [
@@ -24,7 +23,7 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.getEvents = this.getEvents.bind(this);
   }
-  
+
   getEvents() {
     axios.get(`http://localhost:3001/api/?${this.state.limit}&${this.state.filter_type}&${this.state.filter_lang}`)
       .then(result => {
@@ -46,7 +45,7 @@ class App extends Component {
     this.setState({
       ...this.state, ...newFilter
    });
-     
+
    }
 
   componentDidMount() {
@@ -55,17 +54,17 @@ class App extends Component {
 
   render() {
 
-    const eventsByType = this.state.eventsByType.map((element, index) => {
+    /*const eventsByType = this.state.eventsByType.map((element, index) => {
       return (
         <FilterByType key = {element.id}/>
       )
-    })
-    
+    })*/
+
     console.log(this.state)
     if (!this.state.data) {
       return null;
     }
-    
+
     return (
       <div className='App'>
         <Header />
@@ -77,8 +76,89 @@ class App extends Component {
           <ul className='main-menu'>
             <li className = 'mainMenuElement'>Events by type
 
-                {eventsByType}
-                
+                {/*}{eventsByType}*/}
+                <div class='sub-menu'>
+                <form>
+                  <div id='innerFormWrapper'>
+                    <div>
+                      <label>By type </label>
+                        <li>
+                          <label className="container">
+                            <RadioInput type="radio" name="filter_type" value="tags_search=Teatteri" onChange={this.handleChange}/>
+                            <input type="radio" name="filter_type" value="tags_search=Teatteri" onChange={this.handleChange}/>
+                            Teatteri
+                            <span class="checkmark"></span>
+                          </label>
+                        </li>
+                    <li>
+                      <label className="container">
+                        <RadioInput type="radio" name="filter_type" value="tags_search=music" onChange={this.handleChange}/>
+                        <input type="radio"  name="filter_type" value="tags_search=music" onChange={this.handleChange}/>
+                        Music
+                        <span class="checkmark"></span>
+                      </label>
+                    </li>
+                    <li>
+                      <label className="container">
+                        <input type="radio" name="radio" value="1" />
+                        Exhibitions
+                        <span class="checkmark"></span>
+                      </label>
+                    </li>
+                    <li>
+                      <label className="container">
+                        <input type="radio" name="radio" value="2" />
+                        Bars
+                        <span class="checkmark"></span>
+                      </label>
+                    </li>
+                    <li>
+                      <label className="container">
+                        <input type="radio" name="radio" value="3" />
+                        Casino
+                        <span class="checkmark"></span>
+                      </label>
+                    </li>
+                    <li>
+                      <label className="container">
+                        <input type="radio" name="radio" value="4" />
+                        Cheap Sluts
+                        <span class="checkmark"></span>
+                      </label>
+                    </li>
+                  </div>
+                  <div>
+                  <label>By language</label>
+                    <li>
+                      <label className="container">
+                        <RadioInput type="radio" name="filter_lang" value="language_filter=sv" onChange={this.handleChange} />
+                        <input type="radio" name="filter_lang" value="language_filter=sv" onChange={this.handleChange} />
+                        Swedish
+                        <span class="checkmark"></span>
+                      </label>
+                    </li>
+                    <li>
+                      <label className="container">
+                        <RadioInput name="filter_lang" value="language_filter=fi" onChange={this.handleChange} />
+                        <input type="radio" name="filter_lang" value="language_filter=fi" onChange={this.handleChange} />
+                        Finnish
+                        <span class="checkmark"></span>
+                      </label>
+                    </li>
+                    <li>
+                      <label className="container">
+                        <RadioInput type="radio" name="filter_lang" value="language_filter=en" onChange={this.handleChange} />
+                        <input type="radio" name="filter_lang" value="language_filter=en" onChange={this.handleChange} />
+                        English
+                        <span class="checkmark"></span>
+                      </label>
+                    </li>
+                  </div>
+                  </div>
+                  <button onClick={this.handleSubmit}>Apply</button>
+                  </form>
+                </div>
+
             </li>
             {/*<li className = 'mainMenuElement'>Events by date
               <ul class='sub-menu'>
@@ -117,3 +197,4 @@ class App extends Component {
     );
   }
 }
+export default App;

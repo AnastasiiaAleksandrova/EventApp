@@ -1,16 +1,6 @@
 import React, { Component } from 'react';
 import './Header.css';
 
-const style = {
-  width: "100%",
-  height: "35%",
-  backgroundPosition: "center center",
-  backgroundRepeat: "no-repeat",
-  filter: "brightness(0.6)",
-  backgroundSize: "cover",
-  backgroundAttachment: "fixed"
-}
-
 function randomNumber (min, max) {
   return Math.floor(Math.random() * (max - min) ) + min;
 }
