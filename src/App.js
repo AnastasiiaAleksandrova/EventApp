@@ -12,12 +12,12 @@ class App extends Component {
     super(props);
     this.state = {
       data: null,
-      limit: 'limit=10',
-      load_from: '', 
+      limit: 'limit=5',
+      load_from: '',
       filter_type: '',
       filter_lang: ''
     }
-    
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.getEvents = this.getEvents.bind(this);
@@ -44,7 +44,7 @@ class App extends Component {
     this.setState({
       ...this.state, ...newFilter
    });
-     
+
    }
 
   componentDidMount() {
@@ -61,17 +61,15 @@ class App extends Component {
       <div className="App">
         <main>
           <form>
-            
+
             <RadioInput name="filter_type" value="tags_search=Teatteri" onChange={this.handleChange} />Teatteri<br/>
             <RadioInput name="filter_type" value="tags_search=music" onChange={this.handleChange} />Music<br/>
-            
-            
             <RadioInput name="filter_lang" value="language_filter=sv" onChange={this.handleChange} />Swedish<br/>
             <RadioInput name="filter_lang" value="language_filter=en" onChange={this.handleChange} />English<br/>
             <RadioInput name="filter_lang" value="language_filter=fi" onChange={this.handleChange} />Finnish<br/>
-            
-            
-            
+
+
+
             <button onClick={this.handleSubmit}>GO!</button>
           </form>
           <div>
@@ -81,12 +79,13 @@ class App extends Component {
                     key={index}
                     name={el.name.fi}
                     address={el.location.address.street_address}
-                    intro={el.description.intro} />
+                    intro={el.description.intro}
+                    image={el.img} />
               )
             }) }
             </div>
-            
-            
+
+
             <div className="map-events">
               <Map />
             </div>

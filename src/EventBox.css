@@ -1,0 +1,19 @@
+.EventBox {
+  display: flex;
+  border: 1px solid grey;
+  margin: 10px;
+  width: 600px;
+}
+.imagePic img {
+  width:200px;
+  height:auto;
+  object-fit: contain;
+}
+.imagePic  {
+  flex: 1;
+  border: 1px solid grey
+}
+.eventName {
+  flex: 4;
+  border: 1px solid grey
+}
