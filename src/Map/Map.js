@@ -17,6 +17,7 @@ import Marker from './Marker/Marker';
 //   }}>{text}</div>
 
 
+
 class Map extends Component {
  static defaultProps = {
    center: {
@@ -62,7 +63,7 @@ onClose = props => {
 //
 // }
 
-
+ 
  render() {
    return (
      <div style={{position: 'relative', height: '94vh', width: '100%'}} >
