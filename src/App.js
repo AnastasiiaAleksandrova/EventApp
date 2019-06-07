@@ -68,7 +68,11 @@ class App extends Component {
         <nav>
           <ul className='main-menu'>
             <li className = 'mainMenuElement'>Events by type
-              <div class='sub-menu'>
+
+              <div className='sub-menu'>
+
+
+
               <form>
                 <div id='innerFormWrapper'>
                   <div>
@@ -77,42 +81,58 @@ class App extends Component {
                       <label className="container">
                         <RadioInput type="radio" name="filter_type" value="tags_search=Teatteri" onChange={this.handleChange}/>
                         Teatteri
-                        <span class="checkmark"></span>
+
+                        <span className="checkmark"></span>
+
+
                       </label>
                     </li>
                     <li>
                       <label className="container">
                         <RadioInput type="radio" name="filter_type" value="tags_search=music" onChange={this.handleChange}/>
                         Music
-                        <span class="checkmark"></span>
+
+                        <span className="checkmark"></span>
+
+
                       </label>
                     </li>
                     <li>
                       <label className="container">
                         <input type="radio" name="radio" value="1" />
                         Exhibitions
-                        <span class="checkmark"></span>
+
+                        <span className="checkmark"></span>
+
+
+
                       </label>
                     </li>
                     <li>
                       <label className="container">
                         <input type="radio" name="radio" value="2" />
                         Bars
-                        <span class="checkmark"></span>
+
+                        <span className="checkmark"></span>
+
                       </label>
                     </li>
                     <li>
                       <label className="container">
                         <input type="radio" name="radio" value="3" />
                         Casino
-                        <span class="checkmark"></span>
+
+                        <span className="checkmark"></span>
+
                       </label>
                     </li>
                     <li>
                       <label className="container">
                         <input type="radio" name="radio" value="4" />
                         Cheap Sluts
-                        <span class="checkmark"></span>
+
+                        <span className="checkmark"></span>
+
                       </label>
                     </li>
                   </div>
@@ -122,21 +142,27 @@ class App extends Component {
                       <label className="container">
                         <RadioInput type="radio" name="filter_lang" value="language_filter=sv" onChange={this.handleChange} />
                         Swedish
-                        <span class="checkmark"></span>
+
+                        <span className="checkmark"></span>
+
                       </label>
                     </li>
                     <li>
                       <label className="container">
                         <RadioInput name="filter_lang" value="language_filter=fi" onChange={this.handleChange} />
                         Finnish
-                        <span class="checkmark"></span>
+
+                        <span className="checkmark"></span>
+
                       </label>
                     </li>
                     <li>
                       <label className="container">
                         <RadioInput type="radio" name="filter_lang" value="language_filter=en" onChange={this.handleChange} />
                         English
-                        <span class="checkmark"></span>
+
+                        <span className="checkmark"></span>
+
                       </label>
                     </li>
                   </div>
@@ -146,7 +172,9 @@ class App extends Component {
               </div>
             </li>
           </ul>
-          <div class='newMapHolder'>
+
+          <div className='newMapHolder'>
+
             <div></div>
             <Map />
           </div>
@@ -162,7 +190,10 @@ class App extends Component {
                       key={index}
                       name={el.name.fi}
                       address={el.location.address.street_address}
-                      intro={el.description.intro} />
+
+                      intro={el.description.intro}
+                      image={el.img} />
+
                     )
                   })
                  }
