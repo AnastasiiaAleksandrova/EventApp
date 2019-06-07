@@ -183,10 +183,14 @@ min-height: 100%;
 }
 
 .EventBox{
+
 /*  margin: 0.625em 0.625em 0.625em 0;*/
   border: 1px #e2e2e2 solid;
   border-radius: 2px;
   display: flex;
+
+ 
+
 }
 
 footer {
