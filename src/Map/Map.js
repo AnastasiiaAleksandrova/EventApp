@@ -21,10 +21,10 @@ import Marker from './Marker/Marker';
 class Map extends Component {
  static defaultProps = {
    center: {
-     lat: 60.2019475,
-     lng: 24.9286974
+     lat: 60.1847984,
+     lng: 24.9389162,
    },
-   zoom: 12,
+   zoom: 13,
 
  };
  constructor(props){
@@ -65,7 +65,6 @@ onClose = props => {
  createMapOptions(maps) {
     return {
       streetViewControl: true,
-   
     }
   } 
 
