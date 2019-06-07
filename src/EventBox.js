@@ -1,13 +1,18 @@
 import React from 'react';
-
+import './EventBox.css';
 
 function EventBox(props) {
 
     return (
       <div className="EventBox">
-        <div className="eventName">{props.name}</div>
-        <div className="eventAddress">{props.address}</div>
-        <div className="eventIntro">{props.intro}</div>
+
+        <div className="imagePic"><img src={props.image} alt="event-img" /></div>
+        <div>
+          <h3>{props.name}</h3>
+          <p>{props.address}</p>
+          <p>{props.intro}</p>
+        </div>
+
       </div>
     );
   }
