@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Map from './Map/Map';
+
 import Header from './Header/Header';
 import RadioInput from './RadioInput';
 import EventBox from './EventBox';
@@ -10,6 +11,7 @@ class App extends Component {
   constructor (props){
     super(props)
     this.state = {
+      markers: [],
       data: null,
       limit: 'limit=10',
       load_from: '',
@@ -176,7 +178,27 @@ class App extends Component {
           <div className='newMapHolder'>
 
             <div></div>
-            <Map />
+            {this.state.data.map((el, index) => {
+              //console.log(el.location.lat);
+              //console.log(el.location.lon);
+              this.state.markers.push(el.location);
+            //  console.log(this.state.markers);
+              return(
+
+                <Map
+                key={index}
+                  markers={this.state.markers}
+
+               />
+
+                )
+
+              }
+
+            )
+
+             }
+
           </div>
         </nav>
 
@@ -190,7 +212,6 @@ class App extends Component {
                       key={index}
                       name={el.name.fi}
                       address={el.location.address.street_address}
-
                       intro={el.description.intro}
                       image={el.img} />
 
