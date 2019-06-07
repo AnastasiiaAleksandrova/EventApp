@@ -49,6 +49,7 @@ onClose = props => {
  createMapOptions(maps) {
     return {
       streetViewControl: true,
+   
     }
   } 
 
