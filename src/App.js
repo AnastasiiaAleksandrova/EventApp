@@ -43,8 +43,10 @@ class App extends Component {
 
   handleChange(event) {
     let newFilter = {};
+
     newFilter[event.target.name] = event.target.value;
     this.setState({
+      markers: [],
       ...this.state, ...newFilter
     });
   }
@@ -182,23 +184,18 @@ class App extends Component {
               //console.log(el.location.lat);
               //console.log(el.location.lon);
               this.state.markers.push(el.location);
-            //  console.log(this.state.markers);
-              return(
+            console.log(this.state.markers);
 
-                <Map
-                key={index}
-                  markers={this.state.markers}
+                //this.state.markers
 
-               />
 
-                )
 
               }
-
             )
 
-             }
 
+          }
+           <Map markers={this.state.markers} />
           </div>
         </nav>
 

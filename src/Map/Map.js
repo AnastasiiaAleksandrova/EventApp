@@ -86,10 +86,8 @@ onClose = props => {
 
            />
          )
-       })}
-
-
-
+       })
+     }
        </GoogleMapReact>
      </div>
    );
