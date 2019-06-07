@@ -11,7 +11,7 @@ class App extends Component {
     super(props)
     this.state = {
       data: null,
-      limit: 'limit=10',
+      limit: 'limit=1',
       load_from: '',
       filter_type: '',
       filter_lang: '',
@@ -67,7 +67,7 @@ class App extends Component {
         </div>
         <nav>
           <ul className='main-menu'>
-            <li className = 'mainMenuElement'>Events by type
+            <li className = 'mainMenuElement'>Events
 
               <div className='sub-menu'>
 
@@ -170,6 +170,10 @@ class App extends Component {
                 <button onClick={this.handleSubmit}>Apply</button>
                 </form>
               </div>
+            </li>
+            <li className = 'mainMenuElement'>Places
+            </li>
+            <li className = 'mainMenuElement'>Activities
             </li>
           </ul>
 
