@@ -16,7 +16,8 @@ let Marker = ({ text }) => {
           alignItems: 'center',
           justifyContent: 'center',
           borderRadius: '100%',
-          transform: 'translate(-50%, -50%)'
+          transform: 'translate(-50%, -50%)',
+        
         }}>{text}</div>
 
     );
