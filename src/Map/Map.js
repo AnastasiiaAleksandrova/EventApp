@@ -5,14 +5,9 @@ import Marker from './Marker/Marker';
 class Map extends Component {
  static defaultProps = {
    center: {
-<<<<<<< HEAD
      lat: 60.2019475,
      lng: 24.9286974
 
-=======
-     lat: 60.1847984,
-     lng: 24.9389162,
->>>>>>> map style
    },
    zoom: 13,
 
@@ -57,17 +52,12 @@ onClose = props => {
     }
   } 
 
- createMapOptions(maps) {
-    return {
-      streetViewControl: true,
-    }
-  } 
+ 
+ render() {
+   return (
+     <div style={{position: 'relative', height: '94vh', width: '100%'}} >
 
-  render() {
-    return (
-        <div style={{position: 'relative', height: '94vh', width: '100%'}} >
-          
-       <GoogleMapReact 
+       <GoogleMapReact
          bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_API_KEY}}
          defaultCenter={this.props.center}
          defaultZoom={this.props.zoom}
