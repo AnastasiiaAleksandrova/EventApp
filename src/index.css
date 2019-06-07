@@ -1,3 +1,17 @@
+@font-face {
+  font-family: 'Domine';
+  src: local('Domine') url('./fonts/Domine-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat SemiBold';
+  src: local('Montserrat SemiBold') url('./fonts/Montserrat-SemiBold.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   -webkit-font-smoothing: antialiased;
 }
@@ -60,6 +74,7 @@ header {
   color: white;
 }
 
+/* filterHolder */
 nav {
   position: -webkit-sticky;
   position: sticky;
@@ -168,10 +183,14 @@ min-height: 100%;
 }
 
 .EventBox{
+
 /*  margin: 0.625em 0.625em 0.625em 0;*/
   border: 1px #e2e2e2 solid;
   border-radius: 2px;
   display: flex;
+
+
+
 }
 
 footer {
