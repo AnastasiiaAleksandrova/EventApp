@@ -62,6 +62,12 @@ onClose = props => {
 // showInfoBox = (event) =>{
 //
 // }
+ createMapOptions(maps) {
+    return {
+      streetViewControl: true,
+   
+    }
+  } 
 
  
  render() {
