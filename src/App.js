@@ -13,7 +13,7 @@ class App extends Component {
     this.state = {
       markers: [],
       data: null,
-      limit: 'limit=20',
+      limit: 'limit=200',
       load_from: '',
       filter_type: '',
       filter_lang: '',
