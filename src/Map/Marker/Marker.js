@@ -3,6 +3,8 @@ import Pin from '../pin.png';
 
 
 
+
+
 let Marker = ({ text }) => {
 
     return (
@@ -21,6 +23,7 @@ let Marker = ({ text }) => {
 
     );
   }
+
 
 
  export default Marker;
