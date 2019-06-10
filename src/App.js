@@ -178,8 +178,7 @@ class App extends Component {
           </ul>
 
           <div className='newMapHolder'>
-
-            <div></div>
+            <div className="supportDiv"></div>
             <Map />
           </div>
         </nav>
@@ -187,7 +186,7 @@ class App extends Component {
         <main>
           <div id='grid'>
             <div className='side-events'>
-              <div>
+              {/*<div>*/}
                 {this.state.data.map((el, index) => {
                   return(
                     <EventBox
@@ -201,10 +200,11 @@ class App extends Component {
                     )
                   })
                  }
-              </div>
+              {/*</div>*/}
             </div>
             <div className='map-events'>
               {/*<Map />*/}
+
             </div>
             {/*<div className='side-events'>
             </div> */}
