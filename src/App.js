@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Map from './Map/Map';
+
 import Header from './Header/Header';
 import RadioInput from './RadioInput';
 import EventBox from './EventBox';
@@ -10,8 +11,9 @@ class App extends Component {
   constructor (props){
     super(props)
     this.state = {
+      markers: [],
       data: null,
-      limit: 'limit=10',
+      limit: 'limit=3',
       load_from: '',
       filter_type: '',
       filter_lang: '',
@@ -41,8 +43,10 @@ class App extends Component {
 
   handleChange(event) {
     let newFilter = {};
+
     newFilter[event.target.name] = event.target.value;
     this.setState({
+      markers: [],
       ...this.state, ...newFilter
     });
   }
@@ -68,11 +72,7 @@ class App extends Component {
         <nav>
           <ul className='main-menu'>
             <li className = 'mainMenuElement'>Events by type
-
               <div className='sub-menu'>
-
-   
-
               <form>
                 <div id='innerFormWrapper'>
                   <div>
@@ -81,47 +81,34 @@ class App extends Component {
                       <label className="container">
                         <RadioInput type="radio" name="filter_type" value="tags_search=Teatteri" onChange={this.handleChange}/>
                         Teatteri
-
                         <span className="checkmark"></span>
-
-
                       </label>
                     </li>
                     <li>
                       <label className="container">
                         <RadioInput type="radio" name="filter_type" value="tags_search=music" onChange={this.handleChange}/>
                         Music
-
                         <span className="checkmark"></span>
-
-
                       </label>
                     </li>
                     <li>
                       <label className="container">
                         <input type="radio" name="radio" value="1" />
                         Exhibitions
-
                         <span className="checkmark"></span>
-
-
-
                       </label>
                     </li>
                     <li>
                       <label className="container">
                         <input type="radio" name="radio" value="2" />
                         Bars
-
                         <span className="checkmark"></span>
-
                       </label>
                     </li>
                     <li>
                       <label className="container">
                         <input type="radio" name="radio" value="3" />
                         Casino
-
                         <span className="checkmark"></span>
 
                       </label>
@@ -130,9 +117,7 @@ class App extends Component {
                       <label className="container">
                         <input type="radio" name="radio" value="4" />
                         Cheap Sluts
-
                         <span className="checkmark"></span>
-
                       </label>
                     </li>
                   </div>
@@ -142,27 +127,21 @@ class App extends Component {
                       <label className="container">
                         <RadioInput type="radio" name="filter_lang" value="language_filter=sv" onChange={this.handleChange} />
                         Swedish
-
                         <span className="checkmark"></span>
-
                       </label>
                     </li>
                     <li>
                       <label className="container">
                         <RadioInput name="filter_lang" value="language_filter=fi" onChange={this.handleChange} />
                         Finnish
-
                         <span className="checkmark"></span>
-
                       </label>
                     </li>
                     <li>
                       <label className="container">
                         <RadioInput type="radio" name="filter_lang" value="language_filter=en" onChange={this.handleChange} />
                         English
-
                         <span className="checkmark"></span>
-
                       </label>
                     </li>
                   </div>
@@ -174,9 +153,17 @@ class App extends Component {
           </ul>
 
           <div className='newMapHolder'>
+          <div></div> {/*if u delete this div, lists of event will not be shown*/}
 
-            <div></div>
-            <Map />
+            {this.state.data.map((el, index) => {
+              //console.log(el.location.lat);
+              //console.log(el.location.lon);
+              this.state.markers.push(el.location);
+              console.log(this.state.markers); /*need to find a way to reset this array after each filtering*/
+                }
+              )
+            }
+           <Map markers={this.state.markers} />
           </div>
         </nav>
 
@@ -190,21 +177,15 @@ class App extends Component {
                       key={index}
                       name={el.name.fi}
                       address={el.location.address.street_address}
-
                       intro={el.description.intro}
                       image={el.img} />
-
                     )
                   })
                  }
               </div>
             </div>
-            <div className='map-events'>
-              {/*<Map />*/}
+
             </div>
-            {/*<div className='side-events'>
-            </div> */}
-          </div>
         </main>
         <footer>
           dfgdfgdgdfgdfgdfgdfgdfgdfgdfgdf
