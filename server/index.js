@@ -52,11 +52,11 @@ function getNeededInfo(arr) {
 
           temp.description = arr[i].description;
           temp.location = arr[i].location;
-          temp.dates = arr[i].event_dates;
+          temp.dates = arr[i].event_dates.starting_day;
           result.push(temp);
 
         }
-        console.log(result.img);
+        console.log(result[0].dates);
         return result;
 }
 
