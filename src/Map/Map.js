@@ -21,8 +21,8 @@ import Marker from './Marker/Marker';
 class Map extends Component {
  static defaultProps = {
    center: {
-     lat: 60.1847984,
-     lng: 24.9389162,
+    lat: 60.1847984,
+    lng: 24.9389162,
    },
    zoom: 13,
 
@@ -62,13 +62,13 @@ onClose = props => {
 // showInfoBox = (event) =>{
 //
 // }
- createMapOptions(maps) {
-    return {
-      streetViewControl: true,
-    }
-  } 
-
  
+createMapOptions(maps) {
+  return {
+    streetViewControl: true,
+  }
+} 
+
  render() {
    return (
      <div style={{position: 'relative', height: '94vh', width: '100%'}} >
