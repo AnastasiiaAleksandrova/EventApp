@@ -13,7 +13,7 @@ class App extends Component {
     this.state = {
       markers: [],
       data: null,
-      limit: 'limit=3',
+      limit: 'limit=20',
       load_from: '',
       filter_type: '',
       filter_lang: '',
@@ -53,6 +53,7 @@ class App extends Component {
 
   componentDidMount() {
     this.getEvents();
+
   }
 
   render() {
@@ -177,8 +178,12 @@ class App extends Component {
                       key={index}
                       name={el.name.fi}
                       address={el.location.address.street_address}
+                      postcode={el.location.address.postal_code}
+                      city={el.location.address.locality}
                       intro={el.description.intro}
-                      image={el.img} />
+                      image={el.img}
+                      date={el.dates.slice(0,10).split("-").reverse().join("/")}
+                      time={el.dates.slice(11,16).split("-").reverse().join("/")} />
                     )
                   })
                  }
