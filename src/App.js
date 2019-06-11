@@ -11,7 +11,7 @@ class App extends Component {
     super(props)
     this.state = {
       data: null,
-      limit: 'limit=1',
+      limit: 'limit=10',
       load_from: '',
       filter_type: '',
       filter_lang: '',
@@ -62,156 +62,118 @@ class App extends Component {
       <div className='App'>
         <Header />
         <div id='logo-holder'>
-          <h1 id='logo'><span>in</span>HELSINKI</h1>
-          <p id='sub-logo'>ESSENTIAL CITY GUIDE</p>
+          <h1 id='logo'><span>in</span>Helsinki</h1>
+          <p id='sub-logo'>Esential City Guide</p>
         </div>
         <nav>
           <ul className='main-menu'>
             <li className = 'mainMenuElement'>Events
-
               <div className='sub-menu'>
-
-
-
-              <form>
-                <div id='innerFormWrapper'>
-                  <div>
+                <form>
+                  <div id='innerFormWrapper'>
+                    <div>
                     <label>By type </label>
-                    <li>
-                      <label className="container">
-                        <RadioInput type="radio" name="filter_type" value="tags_search=Teatteri" onChange={this.handleChange}/>
-                        Teatteri
-
-                        <span className="checkmark"></span>
-
-
-                      </label>
-                    </li>
-                    <li>
-                      <label className="container">
-                        <RadioInput type="radio" name="filter_type" value="tags_search=music" onChange={this.handleChange}/>
-                        Music
-
-                        <span className="checkmark"></span>
-
-
-                      </label>
-                    </li>
-                    <li>
-                      <label className="container">
-                        <input type="radio" name="radio" value="1" />
-                        Exhibitions
-
-                        <span className="checkmark"></span>
-
-
-
-                      </label>
-                    </li>
-                    <li>
-                      <label className="container">
-                        <input type="radio" name="radio" value="2" />
-                        Bars
-
-                        <span className="checkmark"></span>
-
-                      </label>
-                    </li>
-                    <li>
-                      <label className="container">
-                        <input type="radio" name="radio" value="3" />
-                        Casino
-
-                        <span className="checkmark"></span>
-
-                      </label>
-                    </li>
-                    <li>
-                      <label className="container">
-                        <input type="radio" name="radio" value="4" />
-                        Cheap Sluts
-
-                        <span className="checkmark"></span>
-
-                      </label>
-                    </li>
+                      <li>
+                        <label className="container">
+                          <RadioInput type="radio" name="filter_type" value="tags_search=Teatteri" onChange={this.handleChange}/>
+                          Teatteri
+                          </label>
+                      </li>
+                      <li>
+                        <label className="container">
+                          <RadioInput type="radio" name="filter_type" value="tags_search=music" onChange={this.handleChange}/>
+                          Music
+                        </label>
+                      </li>
+                      <li>
+                        <label className="container">
+                          <input type="radio" name="radio" value="1" />
+                          Exhibitions
+                        </label>
+                      </li>
+                      <li>
+                        <label className="container">
+                          <input type="radio" name="radio" value="2" />
+                          Bars
+                        </label>
+                      </li>
+                      <li>
+                        <label className="container">
+                          <input type="radio" name="radio" value="3" />
+                          Casino
+                        </label>
+                      </li>
+                      <li>
+                        <label className="container">
+                          <input type="radio" name="radio" value="4" />
+                          Cheap Sluts
+                        </label>
+                      </li>
+                    </div>
+                    <div>
+                    <label>By language</label>
+                      <li>
+                        <label className="container">
+                          <RadioInput type="radio" name="filter_lang" value="language_filter=sv" onChange={this.handleChange} />
+                          Swedish
+                        </label>
+                      </li>
+                      <li>
+                        <label className="container">
+                          <RadioInput name="filter_lang" value="language_filter=fi" onChange={this.handleChange} />
+                          Finnish
+                        </label>
+                      </li>
+                      <li>
+                        <label className="container">
+                          <RadioInput type="radio" name="filter_lang" value="language_filter=en" onChange={this.handleChange} />
+                          English
+                        </label>
+                      </li>
+                    </div>
                   </div>
-                  <div>
-                  <label>By language</label>
-                    <li>
-                      <label className="container">
-                        <RadioInput type="radio" name="filter_lang" value="language_filter=sv" onChange={this.handleChange} />
-                        Swedish
-
-                        <span className="checkmark"></span>
-
-                      </label>
-                    </li>
-                    <li>
-                      <label className="container">
-                        <RadioInput name="filter_lang" value="language_filter=fi" onChange={this.handleChange} />
-                        Finnish
-
-                        <span className="checkmark"></span>
-
-                      </label>
-                    </li>
-                    <li>
-                      <label className="container">
-                        <RadioInput type="radio" name="filter_lang" value="language_filter=en" onChange={this.handleChange} />
-                        English
-
-                        <span className="checkmark"></span>
-
-                      </label>
-                    </li>
-                  </div>
-                </div>
-                <button onClick={this.handleSubmit}>Apply</button>
+                  <button onClick={this.handleSubmit}>Apply</button>
                 </form>
               </div>
             </li>
-            <li className = 'mainMenuElement'>Places
+            <li className = 'mainMenuElement'>
+              Places
             </li>
-            <li className = 'mainMenuElement'>Activities
+            <li className = 'mainMenuElement'>
+              Activities
             </li>
           </ul>
-
-          <div className='newMapHolder'>
-            <div className="supportDiv"></div>
-            <Map />
-          </div>
         </nav>
-
-        <main>
-          <div id='grid'>
-            <div className='side-events'>
-              {/*<div>*/}
-                {this.state.data.map((el, index) => {
-                  return(
-                    <EventBox
-                      key={index}
-                      name={el.name.fi}
-                      address={el.location.address.street_address}
-
-                      intro={el.description.intro}
-                      image={el.img} />
-
-                    )
-                  })
-                 }
-              {/*</div>*/}
-            </div>
-            <div className='map-events'>
-              {/*<Map />*/}
-
-            </div>
-            {/*<div className='side-events'>
-            </div> */}
-          </div>
-        </main>
+        <article>
+        {this.state.data.map((el, index) => {
+          return(
+            <EventBox
+              key={index}
+              name={el.name.fi}
+              address={el.location.address.street_address}
+              intro={el.description.intro}
+              image={el.img} />
+            )
+          })
+         }
+         </article>
+         <div id="mapHolder">
+          <aside class="sticky">
+            <Map />
+          </aside>
+        </div>
         <footer>
-          dfgdfgdgdfgdfgdfgdfgdfgdfgdfgdf
+          <ul className='main-menu'>
+            <li className = 'mainMenuElement'>
+              About
+            </li>
+            <li className = 'mainMenuElement'>
+              Contact Us
+            </li>
+            <li className = 'mainMenuElement'>
+              Disclaimer
+            </li>
+          </ul>
         </footer>
       </div>
     );
