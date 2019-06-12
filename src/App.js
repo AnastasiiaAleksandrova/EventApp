@@ -88,13 +88,13 @@ class App extends Component {
               <div className='sub-menu'>
                 <form>
                   <div className='by-type-header'>
-                    By type
+                    Type
                   </div>
                     <div className='by-type'>
                       <li>
                         <label className='filter-button'>
                           <RadioInput type='radio' name='filter_type' value='tags_search=Teatteri' onChange={this.handleChange}/>
-                          <span>Teatteri</span>
+                          <span>Perfomances</span>
                         </label>
                       </li>
                       <li>
@@ -112,24 +112,12 @@ class App extends Component {
                       <li>
                         <label className='filter-button'>
                           <input type='radio' name='radio' value='' />
-                          <span>Bars</span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className='filter-button'>
-                          <input type='radio' name='radio' value='' />
-                          <span>Casino</span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className='filter-button'>
-                          <input type='radio' name='radio' value='' />
-                          <span>Cheap Sluts</span>
+                          <span>Sports</span>
                         </label>
                       </li>
                     </div>
                     <div className='by-language-header'>
-                      By language
+                      Language
                     </div>
                     <div className='by-language'>
                       <li>
@@ -151,7 +139,7 @@ class App extends Component {
                         </label>
                       </li>
                     </div>
-                  <button onClick={this.handleSubmit}>Apply</button>
+                  <button id='apply-filter' onClick={this.handleSubmit}>Apply</button>
                 </form>
               </div>
             </li>

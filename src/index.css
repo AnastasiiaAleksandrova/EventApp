@@ -104,37 +104,6 @@ nav ul {
   color: #fff;
 }
 
-.filter-button {
-  display: block;
-  position: relative;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.filter-button:first-child {
-  /* margin-top: 0.75em; */
-}
-
-.filter-button input {
-  visibility: hidden;
-}
-
-.filter-button span{
-  position: relative;
-  left: -24px;
-  padding: 0.25em;
-  border: 1px solid #292929;
-}
-
-.filter-button input:checked + span{
-  background: #b4c92b;
-  color: #fff;
-  border: 1px solid #b4c92b;
-}
-
 .main-menu {
   height: 100%;
   padding: 0;
@@ -173,12 +142,59 @@ nav ul {
 .by-type, .by-language{
   display: flex;
   flex-direction: row;
-  margin: 20px;
+  margin: 10px 20px 20px 20px;
 }
 
 .by-type-header, .by-language-header{
-  margin: 20px;
+  margin: 20px 20px 0;
   font-weight: 600;
+}
+
+.filter-button {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.filter-button:first-child {
+  /* margin-top: 0.75em; */
+}
+
+.filter-button input {
+  width: 0;
+  margin: 0;
+  visibility: hidden;
+}
+
+.filter-button span{
+  position: relative;
+  /* left: -20px; */
+  padding: 0.25em;
+  border: 1px solid #292929;
+}
+
+.filter-button input:checked + span{
+  background: #b4c92b;
+  color: #fff;
+  border: 1px solid #b4c92b;
+}
+
+#apply-filter{
+  position: relative;
+  width: 90%;
+  height: auto;
+  margin: 0 5% 20px;
+  border: 1px solid #292929;
+  background: #b4c92b;
+  color: #fff;
+  font-family: 'Hind';
+  font-weight: 400;
+  font-size: 1.25em;
+  cursor: pointer;
 }
 
 article {
