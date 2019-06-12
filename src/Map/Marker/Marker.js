@@ -1,3 +1,4 @@
+
 import React from 'react';
 import  Pin  from '../pin.svg';
 import EventBox from 'C:/Users/s1900169/summer-project/events-app/src/EventBox';
@@ -29,5 +30,7 @@ let Marker = ({ text }) => {
           </div>
         )
       };
+
+
 
  export default Marker;

@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
+<<<<<<< HEAD
 import Marker from './Marker/Marker';
+=======
+
+>>>>>>> smth
 
 class Map extends Component {
  static defaultProps = {
    center: {
+<<<<<<< HEAD
 <<<<<<< HEAD
      lat: 60.2019475,
      lng: 24.9286974
@@ -15,6 +20,12 @@ class Map extends Component {
 >>>>>>> smth
    },
    zoom: 13,
+=======
+     lat: 60.2019475,
+     lng: 24.9286974
+   }
+   zoom: 12,
+>>>>>>> smth
 
  };
  constructor (props){
@@ -51,12 +62,7 @@ onClose = props => {
 // showInfoBox = (event) =>{
 //
 // }
- 
-createMapOptions(maps) {
-  return {
-    streetViewControl: true,
-  }
-} 
+
 
  render() {
    return (
