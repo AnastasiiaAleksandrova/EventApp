@@ -11,7 +11,6 @@ class App extends Component {
   constructor (props){
     super(props)
     this.state = {
-      markers: [],
      data: null,
      limit: 'limit=20',
      load_from: '',
