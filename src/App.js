@@ -12,13 +12,13 @@ class App extends Component {
     super(props)
     this.state = {
       markers: [],
-      data: null,
-      limit: 'limit=200',
-      load_from: '',
-      filter_type: '',
-      filter_lang: '',
-      eventsByType: [
-        {id: 1}
+     data: null,
+     limit: 'limit=20',
+     load_from: '',
+     filter_type: '',
+     filter_lang: '',
+     eventsByType: [
+       {id: 1}
       ]
     }
     this.handleChange = this.handleChange.bind(this);
@@ -36,9 +36,21 @@ class App extends Component {
     });
   }
 
+  getPins() {
+    axios.get(`http://localhost:3001/api/pins/?${this.state.filter_type}&${this.state.filter_lang}`)
+    .then(result => {
+      this.setState(state => {
+        state.pins = result.data;
+        return state;
+      });
+    });
+
+  }
+
   handleSubmit(event) {
     event.preventDefault();
-    this.getEvents()
+    this.getEvents();
+    this.getPins();
   }
 
   handleChange(event) {
@@ -46,20 +58,18 @@ class App extends Component {
 
     newFilter[event.target.name] = event.target.value;
     this.setState({
-      markers: [],
       ...this.state, ...newFilter
     });
   }
 
   componentDidMount() {
     this.getEvents();
-
+ this.getPins();
   }
 
   render() {
 
-    console.log(this.state)
-    if (!this.state.data) {
+    if (!this.state.data || !this.state.pins){
       return null;
     }
 
@@ -84,7 +94,7 @@ class App extends Component {
                     <div className='by-type'>
                       <li>
                         <label className='filter-button'>
-                          <RadioInput type='radio' name='filter_type' value='tags_search=teatteri' onChange={this.handleChange}/>
+                          <RadioInput type='radio' name='filter_type' value='tags_search=Teatteri' onChange={this.handleChange}/>
                           <span>Teatteri</span>
                         </label>
                       </li>
@@ -158,18 +168,22 @@ class App extends Component {
         {this.state.data.map((el, index) => {
           return(
             <EventBox
-              key={index}
-              name={el.name.fi}
-              address={el.location.address.street_address}
-              intro={el.description.intro}
-              image={el.img} />
+                      key={index}
+                      name={el.name.fi}
+                      address={el.location.address.street_address}
+                      postcode={el.location.address.postal_code}
+                      city={el.location.address.locality}
+                      intro={el.description.intro}
+                      image={el.img}
+                      date={el.dates.slice(0,10).split("-").reverse().join(".")}
+                      time={el.dates.slice(11,16).split("-").reverse().join("/")} />
             )
           })
          }
          </article>
          <div id='mapHolder'>
           <aside class='sticky'>
-            <Map />
+            <Map events={this.state.pins} />
           </aside>
         </div>
         <footer>

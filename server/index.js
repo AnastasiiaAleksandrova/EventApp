@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3001;
 const axios = require('axios');
-//const flatted = require('flatted');
+
 
 app.use(function(req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -10,22 +10,14 @@ app.use(function(req, res, next) {
   next();
 });
 
+function collectOptions(req) {
+  return '?' + Object.keys(req.query).map(key => `${key}=${encodeURIComponent(req.query[key])}`).join('&')
+}
 
 
 app.get('/api/', (req, res) => {
-  console.log(req.query)
-
-  let options = '?';
-  for (let key in req.query) {
-      if (options != '?') {
-        options += '&'
-      }
-      options += `${key}=${encodeURIComponent(req.query[key])}`
-      console.log(options);
-  }
-
-
-
+  let options = collectOptions(req);
+  console.log(options);
   axios.get('http://open-api.myhelsinki.fi/v1/events/' + options)
       .then(response => {
         let result = getNeededInfo(response.data.data);
@@ -36,19 +28,61 @@ app.get('/api/', (req, res) => {
 
 })
 
+
+app.get('/api/pins/', (req, res) => {
+  let options = collectOptions(req);
+  console.log(options);
+  axios.get('http://open-api.myhelsinki.fi/v1/events/' + options)
+      .then(response => {
+        //console.log(response.data.data)
+        let result = getPins(response.data.data);
+        //console.log(result)
+        res.send(JSON.stringify(result))
+
+      })
+      .catch(err => console.log('All fucked up in server! ' + err));
+
+})
+
+class Location {
+  constructor(lat, lon) {
+    this.lat = lat;
+    this.lon = lon;
+  }
+
+  toString() {
+    return `${this.lat} ${this.lon}`
+  }
+}
+
+
+function getPins(arr) {
+  let locationSet = new Set();
+
+  return arr.map(el => new Location(el.location.lat, el.location.lon))
+    .filter(elem => {
+      if (!locationSet.has(elem.toString())) {
+        locationSet.add(elem.toString())
+        return true;
+      } else {
+        return false;
+      }
+    })
+}
+
+
+
 function getNeededInfo(arr) {
   let result = [];
         for (let i = 0; i < arr.length; i++) {
           let temp = {};
           temp.name = arr[i].name;
-          if (arr[i].description.images.length == 0) {
-          temp.img = 'https://ss.metronews.ru/userfiles/materials/125/1258933/858x540.jpg';
-            //temp.img = 'https://ss.metronews.ru/userfiles/materials/125/1258933/858x540.jpg';
-            //  console.log(temp.img);
-          } else {
-            temp.img = arr[i].description.images[0].url;
-          //  console.log(temp.img);
-          }
+            if (arr[i].description.images.length == 0) {
+            temp.img = 'https://ss.metronews.ru/userfiles/materials/125/1258933/858x540.jpg';
+
+            } else {
+              temp.img = arr[i].description.images[0].url;
+            }
 
           temp.description = arr[i].description;
           temp.location = arr[i].location;
@@ -56,7 +90,7 @@ function getNeededInfo(arr) {
           result.push(temp);
 
         }
-        console.log(result[0].dates);
+        console.log(result.img);
         return result;
 }
 
