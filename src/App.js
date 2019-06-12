@@ -34,7 +34,7 @@ class App extends Component {
         } else {
           state.data = result.data;
         }
-        state.start = this.state.start + this.state.limit + 1;
+        state.start = this.state.data.length + 1;
         return state;
       });
     });
