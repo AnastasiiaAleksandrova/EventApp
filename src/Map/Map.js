@@ -63,7 +63,7 @@ onClose = props => {
             key={index}
             lat={el.lat}
             lng={el.lon}
-            text='E'
+            text='ХУЙ!'
             onClick={this.onMarkerClick} />
          )
        })

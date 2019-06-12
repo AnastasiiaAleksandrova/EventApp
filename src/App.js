@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Map from './Map/Map';
-
 import Header from './Header/Header';
 import RadioInput from './RadioInput';
 import EventBox from './EventBox';
@@ -43,7 +42,6 @@ class App extends Component {
         return state;
       });
     });
-
   }
 
   handleSubmit(event) {
