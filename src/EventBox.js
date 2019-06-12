@@ -7,12 +7,11 @@ function EventBox(props) {
         <div className="image-holder">
           <img src={props.image} alt="event-img" />
         </div>
-
-          <p className='name'>What:<br></br>{props.name}</p>
-          <p className="timeStyle">When:{props.date} {props.time}</p>
-          <p className="address">Where:<br></br>{props.address} {props.postcode} {props.city}</p>
-          <p className="intro">Info:<br></br>{props.intro}</p>
-          <p className="timeStyle">HERE IS GONNA BE URL FOR EVENT</p>
+          <p className='name'>{props.name}</p>
+          <p className="date-n-time"><i class="fas fa-calendar-alt"></i><br></br>{props.date} {props.time}</p>
+          <p className="address"><i class="fas fa-map-marker-alt"></i><br></br>{props.address} {props.postcode} {props.city}</p>
+          <p className="intro"><i class="fas fa-info-circle"></i><br></br>{props.intro}</p>
+          <p className="event-url"><i class="fas fa-link"></i></p>
       </div>
     );
   }

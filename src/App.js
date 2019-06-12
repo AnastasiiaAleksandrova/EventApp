@@ -87,9 +87,6 @@ class App extends Component {
             <li className='main-menu-element'>Events
               <div className='sub-menu'>
                 <form>
-                  <div className='by-type-header'>
-                    Type
-                  </div>
                     <div className='by-type'>
                       <li>
                         <label className='filter-button'>
@@ -117,25 +114,31 @@ class App extends Component {
                       </li>
                     </div>
                     <div className='by-language-header'>
-                      Language
+                      <i class="fas fa-language"></i>
                     </div>
                     <div className='by-language'>
                       <li>
                         <label className='filter-button'>
-                          <RadioInput type='radio' name='filter_lang' value='language_filter=sv' onChange={this.handleChange} />
-                          <span>Swedish</span>
+                          <RadioInput name='filter_lang' value='language_filter=fi' onChange={this.handleChange} />
+                          <span>Suomi</span>
                         </label>
                       </li>
                       <li>
                         <label className='filter-button'>
-                          <RadioInput name='filter_lang' value='language_filter=fi' onChange={this.handleChange} />
-                          <span>Finnish</span>
+                          <RadioInput type='radio' name='filter_lang' value='language_filter=sv' onChange={this.handleChange} />
+                          <span>Svenska</span>
                         </label>
                       </li>
                       <li>
                         <label className='filter-button'>
                           <RadioInput type='radio' name='filter_lang' value='language_filter=en' onChange={this.handleChange} />
                           <span>English</span>
+                        </label>
+                      </li>
+                      <li>
+                        <label className='filter-button'>
+                          <RadioInput type='radio' name='filter_lang' value='language_filter=ru' onChange={this.handleChange} />
+                          <span>Русский</span>
                         </label>
                       </li>
                     </div>
@@ -174,14 +177,14 @@ class App extends Component {
           </aside>
         </div>
         <footer>
-          <ul className='main-menu'>
-            <li className = 'main-menu-element'>
+          <ul className='footer-menu'>
+            <li className = 'footer-menu-element'>
               About
             </li>
-            <li className = 'main-menu-element'>
+            <li className = 'footer-menu-element'>
               Contact Us
             </li>
-            <li className = 'main-menu-element'>
+            <li className = 'footer-menu-element'>
               Disclaimer
             </li>
           </ul>

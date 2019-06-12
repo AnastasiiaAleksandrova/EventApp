@@ -104,13 +104,14 @@ nav ul {
   color: #fff;
 }
 
-.main-menu {
+.main-menu, .footer-menu {
   height: 100%;
+  list-style: none;
   padding: 0;
+  margin: 0;
 }
 
-.main-menu, .sub-menu {
-  list-style: none;
+.sub-menu {
   margin: 0;
 }
 
@@ -120,6 +121,15 @@ nav ul {
   padding: 0.6em 0 0.6em 1.75em;
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
+}
+
+.main-menu-element::after{
+position: absolute;
+content: '\25BE';
+}
+
+.main-menu-element:hover::after{
+content: '\25B4';
 }
 
 .sub-menu {
@@ -142,12 +152,17 @@ nav ul {
 .by-type, .by-language{
   display: flex;
   flex-direction: row;
-  margin: 10px 20px 20px 20px;
+  margin: 0px 20px;
+}
+
+.by-type{
+  margin-top: 20px;
 }
 
 .by-type-header, .by-language-header{
-  margin: 20px 20px 0;
+  margin: 0 20px;
   font-weight: 600;
+  font-size: 40px;
 }
 
 .filter-button {
@@ -180,14 +195,14 @@ nav ul {
 .filter-button input:checked + span{
   background: #b4c92b;
   color: #fff;
-  border: 1px solid #b4c92b;
+  border: 1px solid #292929;
 }
 
 #apply-filter{
   position: relative;
-  width: 88%;
+  width: 48.4%;
   height: auto;
-  margin: 0 6% 20px;
+  margin: 14px 20px 20px;
   border: 1px solid #292929;
   background: #b4c92b;
   color: #fff;
@@ -195,6 +210,10 @@ nav ul {
   font-weight: 400;
   font-size: 1.25em;
   cursor: pointer;
+}
+
+#apply-filter:active{
+  background: #292929;
 }
 
 article {
@@ -240,4 +259,11 @@ footer ul {
   position: relative;
   justify-content: flex-start;
   color: #fff;
+}
+
+.footer-menu-element {
+  display: block;
+  padding: 0.6em 0 0.6em 1.75em;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
 }
