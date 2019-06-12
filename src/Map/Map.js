@@ -64,12 +64,11 @@ onClose = props => {
             lat={el.lat}
             lng={el.lon}
             text='E'
-            onClick={this.onMarkerClick}
-
-           />
+            onClick={this.onMarkerClick} />
          )
        })
      }
+
        </GoogleMapReact>
      </div>
    );
