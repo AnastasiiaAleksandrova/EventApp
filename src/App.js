@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Map from './Map/Map';
+
 import Header from './Header/Header';
 import RadioInput from './RadioInput';
 import EventBox from './EventBox';
@@ -10,8 +11,9 @@ class App extends Component {
   constructor (props){
     super(props)
     this.state = {
+      markers: [],
       data: null,
-      limit: 'limit=10',
+      limit: 'limit=200',
       load_from: '',
       filter_type: '',
       filter_lang: '',
@@ -41,14 +43,17 @@ class App extends Component {
 
   handleChange(event) {
     let newFilter = {};
+
     newFilter[event.target.name] = event.target.value;
     this.setState({
+      markers: [],
       ...this.state, ...newFilter
     });
   }
 
   componentDidMount() {
     this.getEvents();
+
   }
 
   render() {

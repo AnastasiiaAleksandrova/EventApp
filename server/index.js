@@ -44,19 +44,19 @@ function getNeededInfo(arr) {
           if (arr[i].description.images.length == 0) {
           temp.img = 'https://ss.metronews.ru/userfiles/materials/125/1258933/858x540.jpg';
             //temp.img = 'https://ss.metronews.ru/userfiles/materials/125/1258933/858x540.jpg';
-              console.log(temp.img);
+            //  console.log(temp.img);
           } else {
             temp.img = arr[i].description.images[0].url;
-            console.log(temp.img);
+          //  console.log(temp.img);
           }
 
           temp.description = arr[i].description;
           temp.location = arr[i].location;
-          temp.dates = arr[i].event_dates;
+          temp.dates = arr[i].event_dates.starting_day;
           result.push(temp);
 
         }
-        console.log(result.img);
+        console.log(result[0].dates);
         return result;
 }
 
