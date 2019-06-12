@@ -76,6 +76,7 @@ function getNeededInfo(arr) {
   let result = [];
         for (let i = 0; i < arr.length; i++) {
           let temp = {};
+          temp.id = arr[i].id;
           temp.name = arr[i].name;
             if (arr[i].description.images.length == 0) {
             temp.img = 'https://ss.metronews.ru/userfiles/materials/125/1258933/858x540.jpg';
