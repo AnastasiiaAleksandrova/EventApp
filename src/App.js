@@ -26,14 +26,10 @@ class App extends Component {
   }
 
   getEvents() {
-    axios.get(`http://localhost:3001/api/?limit=${this.state.limit}&start=${this.state.start}&${this.state.filter_type}&${this.state.filter_lang}`)
+    axios.get(`http://localhost:3001/api/?limit=${this.state.limit}&${this.state.filter_type}&${this.state.filter_lang}`)
     .then(result => {
       this.setState(state => {
-        if (this.state.data) {
-          state.data = [ ...this.state.data, ...result.data];
-        } else {
-          state.data = result.data;
-        }
+        state.data = result.data;
         state.start = this.state.data.length + 1;
         return state;
       });
@@ -49,7 +45,6 @@ class App extends Component {
         return state;
       });
     });
-
   }
 
   handleSubmit(event) {
@@ -57,6 +52,7 @@ class App extends Component {
     this.getEvents();
     this.getPins();
     document.documentElement.scrollTop = 0;
+    console.log(this.state);
   }
 
   handleChange(event) {
@@ -70,13 +66,18 @@ class App extends Component {
   }
 
   handleScroll() {
-    if (
-      window.innerHeight + document.documentElement.scrollTop
-      === document.documentElement.offsetHeight
-    ) {
-      document.documentElement.scrollTop = document.documentElement.scrollTop;
+    if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
+      
       console.log('load data')
-      this.getEvents();
+      axios.get(`http://localhost:3001/api/?limit=${this.state.limit}&start=${this.state.start}&${this.state.filter_type}&${this.state.filter_lang}`)
+        .then(result => {
+          this.setState(state => {
+            state.data = [ ...this.state.data, ...result.data];
+            state.start = this.state.data.length + 1;
+            return state;
+          });
+        });
+        console.log(this.state);
     }
     
   
