@@ -16,7 +16,7 @@ html, body, #root, .App {
 
 .header-holder{
   display: grid;
-  grid-template-columns: 1fr minmax(0, 15em) 1em minmax(0, 40em) 1fr;
+  grid-template-columns: 1fr 1em minmax(0, 15em) minmax(0, 40em) 1fr;
   grid-template-rows: repeat(1);
   position: -webkit-sticky;
   position: sticky;
