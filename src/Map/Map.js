@@ -149,7 +149,7 @@ onClose = props => {
 
  render() {
    return (
-     <div style={{position: 'relative', height: '84vh', maxHeight: '', width: '100%', }} >
+     <div style={{position: 'relative', height: '90vh', maxHeight: '', width: '100%', }} >
        <GoogleMapReact
          bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_API_KEY}}
          defaultCenter={this.props.center}

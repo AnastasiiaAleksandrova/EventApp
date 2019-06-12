@@ -1,13 +1,47 @@
-
-.imagePic img {
-  width:100px;
-  height:auto;
-  object-fit: contain;
+.EventBox{
+  display: grid;
+  grid-template-columns: minmax(9em, 45em);
+  grid-template-rows: repeat(7, auto);
+  border: 1px solid #e2e2e2;
+  border-radius: 2px 2px;
+  margin: 0 0 2em 1em;
+  padding: 1em;
 }
-.imagePic  {
 
+.image-holder {
+  grid-row: 1/4;
 }
-.eventName {
+
+img {
+  width: 100%;
+  height:100%;
+  object-fit: cover;
+  transition: transform 200ms linear;
+}
+
+img:hover{
+  transform: scale(1.05);
+}
 
 
+.name, .address, .intro{
+  margin: 0 0 1em 0;
+  font-family: "Hind";
+}
+
+.name{
+  grid-row: 4/5;
+  font-weight: 600;
+  font-size: 0.875em;
+  margin-top: 1em;
+}
+
+.address{
+grid-row: 5/6;
+font-size: 0.875em;
+}
+
+.intro{
+grid-row: 6/7;
+font-size: 0.875em;
 }
