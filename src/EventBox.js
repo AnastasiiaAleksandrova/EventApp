@@ -9,8 +9,10 @@ function EventBox(props) {
         <div className="imagePic"><img src={props.image} alt="event-img" /></div>
         <div>
           <h3>{props.name}</h3>
-          <p>{props.address}</p>
           <p>{props.intro}</p>
+          <p>{props.date}  at {props.time}</p>
+          <p>{props.address} {props.postcode} {props.city}</p>
+
         </div>
 
       </div>
