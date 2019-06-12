@@ -10,7 +10,7 @@ let Marker = ({ text }) => {
     return (
 
       <div style={{
-          color: 'white',
+          color: 'red',
           backgroundImage: 'url('+ Pin + ')',
           padding: '5px',
           display: 'inline-flex',
