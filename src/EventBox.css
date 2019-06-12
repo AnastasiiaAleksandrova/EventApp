@@ -1,4 +1,4 @@
-.EventBox{
+.event-box{
   display: grid;
   grid-template-columns: minmax(9em, 45em);
   grid-template-rows: repeat(8, auto);
@@ -22,7 +22,6 @@ img {
 img:hover{
   transform: scale(1.05);
 }
-
 
 .name, .address, .intro, .date-n-time, .event-url {
   margin: 0 0 1em 0;

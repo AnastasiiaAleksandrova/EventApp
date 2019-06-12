@@ -31,10 +31,6 @@ html, body, #root, .App {
   background-color: #fff;
 }
 
-header, nav, article, aside, footer {
-  /* border: 1px solid gray; */
-}
-
 header, nav, article, aside {
   margin: 0;
 }
@@ -152,7 +148,7 @@ content: '\25B4';
 .by-type, .by-language{
   display: flex;
   flex-direction: row;
-  margin: 0px 20px;
+  margin: 0 20px;
 }
 
 .by-type{
@@ -173,10 +169,6 @@ content: '\25B4';
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-
-.filter-button:first-child {
-  /* margin-top: 0.75em; */
 }
 
 .filter-button input {
@@ -224,7 +216,7 @@ article {
 }
 
 article :last-child{
-margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 aside {
@@ -232,11 +224,11 @@ aside {
   margin-right: 1em;
 }
 
-[id^="mapHolder"] {
+[id^="map-holder"] {
   grid-column: 3/6;
 }
 
-#mapHolder {
+#map-holder {
   grid-row: 5/8;
 }
 

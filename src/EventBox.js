@@ -3,7 +3,7 @@ import './EventBox.css';
 
 function EventBox(props) {
     return (
-      <div className="EventBox">
+      <div className="event-box">
         <div className="image-holder">
           <img src={props.image} alt="event-img" />
         </div>
