@@ -16,7 +16,7 @@ class App extends Component {
      start: 0,
      filter_type: '',
      filter_lang: '',
-    
+
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -67,7 +67,7 @@ class App extends Component {
 
   handleScroll() {
     if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
-      
+
       console.log('load data')
       axios.get(`http://localhost:3001/api/?limit=${this.state.limit}&start=${this.state.start}&${this.state.filter_type}&${this.state.filter_lang}`)
         .then(result => {
@@ -79,8 +79,8 @@ class App extends Component {
         });
         console.log(this.state);
     }
-    
-  
+
+
   }
 
   componentDidMount() {
@@ -204,7 +204,7 @@ class App extends Component {
          }
          </article>
          <div id='mapHolder'>
-          <aside class='sticky'>
+          <aside className='sticky'>
             <Map events={this.state.pins} />
           </aside>
         </div>
