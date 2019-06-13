@@ -1,6 +1,5 @@
 import React from 'react';
-import  Pin  from '../marker.png';
-
+import  Pin  from '../pin.svg';
 
 let Marker = ({ text }) => {
   return (
@@ -25,7 +24,6 @@ let Marker = ({ text }) => {
               padding: '20px',
               zIndex: '999'
             }}>
-         
           </div>
         )
       };
