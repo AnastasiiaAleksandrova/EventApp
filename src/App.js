@@ -72,14 +72,13 @@ class App extends Component {
 
     return (
       <div className='App'>
-      <div className='header-holder'>
-        <Header />
-        <div id='logo-holder'>
-          <h1 id='logo'><span>in</span>Helsinki</h1>
-          <p id='sub-logo'>Esential City Guide</p>
+        <div className='header-holder'>
+          <Header />
+          <div id='logo-holder'>
+            <h1 id='logo'><span>in</span>Helsinki</h1>
+            <p id='sub-logo'>Esential City Guide</p>
+          </div>
         </div>
-        </div>
-        <div className='map-events-holder'>
         <nav>
           <ul className='main-menu'>
             <li className='main-menu-element'>Events
@@ -152,7 +151,8 @@ class App extends Component {
             </li>
           </ul>
         </nav>
-        <article>
+        <div className='map-events-holder'>
+          <article>
         {this.state.data.map((el, index) => {
           return(
             <EventBox
@@ -168,12 +168,12 @@ class App extends Component {
             )
           })
          }
-         </article>
-         <div id='map-holder'>
+          </article>
+          <div id='map-holder'>
           <aside class='sticky'>
             <Map events={this.state.pins} />
           </aside>
-        </div>
+          </div>
         <footer>
           <ul className='footer-menu'>
             <li className = 'footer-menu-element'>
@@ -187,7 +187,7 @@ class App extends Component {
             </li>
           </ul>
         </footer>
-      </div>
+        </div>
       </div>
     );
   }
