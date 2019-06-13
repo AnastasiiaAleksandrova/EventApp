@@ -29,5 +29,5 @@ let Marker = ({ text }) => {
           </div>
         )
       };
-      
+
  export default Marker;
