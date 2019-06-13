@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import Map from './Map/Map';
+// import Map from './Map/Map';
+import MapContainer from './Map/MapContainer';
 
 import Header from './Header/Header';
 import RadioInput from './RadioInput';
@@ -205,7 +206,7 @@ class App extends Component {
          </article>
          <div id='mapHolder'>
           <aside className='sticky'>
-            <Map events={this.state.pins} />
+            <MapContainer events={this.state.pins} />
           </aside>
         </div>
         <footer>
