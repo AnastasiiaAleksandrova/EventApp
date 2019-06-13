@@ -9,13 +9,24 @@ import Marker from './Marker/Marker';
 class Map extends Component {
  static defaultProps = {
    center: {
+     /*lat: 60.2019475,
+     lng: 24.9286974*/
      lat: 60.2019475,
      lng: 24.9286974
+
    },
-   zoom: 12,
+   zoom: 13,
 
  };
+ constructor (props){
+   super(props)
+   this.state = {
+    myLat: null,
+    myLon: null,
 
+   }
+
+ };
 
  componentDidMount(){
    navigator.geolocation.getCurrentPosition((position) => {
@@ -23,9 +34,28 @@ class Map extends Component {
        myLat:position.coords.latitude,
        myLon:position.coords.longitude
      });
-
+console.log(position);
    });
  }
+/*
+ componentDidMount(props) {
+     navigator.geolocation.getCurrentPosition(
+       position => {
+         const { latitude, longitude } = position.coords;
+
+         this.setState({
+           userLocation: { lat: latitude, lng: longitude },
+           loading: false
+         });
+       },
+       () => {
+         this.setState({ loading: false });
+       }
+     );
+   }*/
+
+
+
 
  onMarkerClick = props =>
      this.setState({
@@ -55,24 +85,38 @@ onClose = props => {
          defaultZoom={this.props.zoom}
          options={this.createMapOptions}
        >
+
+
+
        {this.props.events.map((el, index) => {
 
          return(
 
-           <Marker
+         <Marker
             key={index}
             lat={el.lat}
             lng={el.lon}
-            text='E'
+            
             onClick={this.onMarkerClick} />
          )
-       })
-     }
+       } )
+ }
+
+
+     <Marker
+
+      lat={this.state.myLat}
+      lng={this.state.myLon}
+
+       />
+
+
 
        </GoogleMapReact>
      </div>
    );
  }
 }
+
 
 export default Map;

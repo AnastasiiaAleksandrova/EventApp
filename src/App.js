@@ -12,7 +12,7 @@ class App extends Component {
     super(props)
     this.state = {
      data: null,
-     limit: 'limit=20',
+     limit: 'limit=2',
      load_from: '',
      filter_type: '',
      filter_lang: '',
@@ -181,7 +181,7 @@ class App extends Component {
          }
          </article>
          <div id='mapHolder'>
-          <aside class='sticky'>
+          <aside className='sticky'>
             <Map events={this.state.pins} />
           </aside>
         </div>
