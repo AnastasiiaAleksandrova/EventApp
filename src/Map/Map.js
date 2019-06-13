@@ -33,10 +33,14 @@
 //    });
 //  };
 
-//  onMarkerClick = props =>
-//      this.setState({
-//        showInfoWindow: true
-//      });
+
+class Map extends Component {
+ static defaultProps = {
+   center: {
+    lat: 60.1847984,
+    lng: 24.9389162,
+   },
+   zoom: 13,
 
 // onClose = props => {
 //    if (this.state.showInfoWindow) {
@@ -54,7 +58,12 @@
 //     });
 //   }
 // }
-
+ 
+createMapOptions(maps) {
+  return {
+    streetViewControl: true,
+  }
+} 
 
 // createMapOptions(maps) {
 //   return {
