@@ -5,8 +5,6 @@ import Marker from './Marker/Marker';
 class Map extends Component {
  static defaultProps = {
    center: {
-     /*lat: 60.2019475,
-     lng: 24.9286974*/
      lat: 60.2019475,
      lng: 24.9286974
 
@@ -53,9 +51,6 @@ onClose = props => {
          defaultZoom={this.props.zoom}
          options={this.createMapOptions}
        >
-
-
-
        {this.props.events.map((el, index) => {
          return(
          <Marker
@@ -66,7 +61,6 @@ onClose = props => {
          )
        } )
  }
-
 
      <Marker
       lat={this.state.myLat}
