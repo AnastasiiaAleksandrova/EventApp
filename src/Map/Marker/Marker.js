@@ -1,6 +1,5 @@
 import React from 'react';
 import  Pin  from '../pin.svg';
-import EventBox from 'C:/Users/s1900169/summer-project/events-app/src/EventBox';
 
 let Marker = ({ text }) => {
   return (
@@ -25,7 +24,6 @@ let Marker = ({ text }) => {
               padding: '20px',
               zIndex: '999'
             }}>
-          <EventBox   name={'HELLLOOOOO'}/>
           </div>
         )
       };
