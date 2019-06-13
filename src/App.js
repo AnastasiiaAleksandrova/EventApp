@@ -87,7 +87,7 @@ class App extends Component {
                     <div className='by-type'>
                       <li>
                         <label className='filter-button'>
-                          <RadioInput type='radio' name='filter_type' value='tags_search=Teatteri' onChange={this.handleChange}/>
+                          <RadioInput type='radio' name='filter_type' value='tags_search=teatteri' onChange={this.handleChange}/>
                           <span>Perfomances</span>
                         </label>
                       </li>
@@ -99,14 +99,56 @@ class App extends Component {
                       </li>
                       <li>
                         <label className='filter-button'>
-                          <input type='radio' name='radio' value='' />
+                          <input type='radio' name='filter_type' value='tags_search=families' onChange={this.handleChange}/>
+                          <span>Families</span>
+                        </label>
+                      </li>
+                      <li>
+                        <label className='filter-button'>
+                          <input type='radio' name='filter_type' value='tags_search=games' onChange={this.handleChange}/>
+                          <span>Games</span>
+                        </label>
+                      </li>
+                      <li>
+                        <label className='filter-button'>
+                          <input type='radio' name='filter_type' value='tags_search=sports' onChange={this.handleChange}/>
+                          <span>Sports</span>
+                        </label>
+                      </li>
+                      <li>
+                        <label className='filter-button'>
+                          <input type='radio' name='filter_type' value='tags_search=dance' onChange={this.handleChange}/>
+                          <span>Dance</span>
+                        </label>
+                      </li>
+                      <li>
+                        <label className='filter-button'>
+                          <input type='radio' name='filter_type' value='tags_search=families' onChange={this.handleChange}/>
+                          <span>Families</span>
+                        </label>
+                      </li>
+                      <li>
+                        <label className='filter-button'>
+                          <input type='radio' name='filter_type' value='tags_search=exhibitions' onChange={this.handleChange}/>
                           <span>Exhibitions</span>
                         </label>
                       </li>
                       <li>
                         <label className='filter-button'>
-                          <input type='radio' name='radio' value='' />
-                          <span>Sports</span>
+                          <input type='radio' name='filter_type' value='tags_search=architecture' onChange={this.handleChange}/>
+                          <span>Architecture</span>
+                        </label>
+                      </li>
+                      <li>
+                        <label className='filter-button'>
+                          <input type='radio' name='filter_type' value='tags_search=museums' onChange={this.handleChange}/>
+                          <span>Museums</span>
+                        </label>
+                      </li>
+                      <li>
+                        <label className='filter-button'>
+                          <input type='radio' name='filter_type' value='tags_search=christmas' onChange={this.handleChange}/>
+                          <span>Christmas</span>
                         </label>
                       </li>
                     </div>
@@ -143,19 +185,20 @@ class App extends Component {
                 </form>
               </div>
             </li>
-            <li className = 'main-menu-element'>
-              Places
-            </li>
-            <li className = 'main-menu-element'>
-              Activities
-            </li>
+            {/*<li className = 'main-menu-element'>
+              /*Places
+            </li>*/}
+            {/*<li className = 'main-menu-element last'>
+               Activities
+            </li>*/}
           </ul>
         </nav>
         <div className='map-events-holder'>
           <article>
-        {this.state.data.map((el, index) => {
-          return(
-            <EventBox
+            {this.state.data.map((el, index) => {
+              return(
+                <div className="complex-box">
+                <EventBox
                       key={index}
                       name={el.name.fi}
                       address={el.location.address.street_address}
@@ -164,16 +207,19 @@ class App extends Component {
                       intro={el.description.intro}
                       image={el.img}
                       date={el.dates.slice(0,10).split("-").reverse().join(".")}
-                      time={el.dates.slice(11,16).split("-").reverse().join("/")} />
-            )
-          })
-         }
+                      time={el.dates.slice(11,16).split("-").reverse().join("/")}
+                />
+                <Map style={{height: '30vh'}} events={[{lat: el.location.lat, lon: el.location.lon}]} />
+                </div>
+              )
+            })}
           </article>
           <div id='map-holder'>
-          <aside class='sticky'>
-            <Map events={this.state.pins} />
-          </aside>
+            <aside class='sticky'>
+            <Map style={{height: '94vh'}}  events={this.state.pins} />
+            </aside>
           </div>
+        </div>
         <footer>
           <ul className='footer-menu'>
             <li className = 'footer-menu-element'>
@@ -182,12 +228,11 @@ class App extends Component {
             <li className = 'footer-menu-element'>
               Contact Us
             </li>
-            <li className = 'footer-menu-element'>
+            <li className = 'footer-menu-element last'>
               Disclaimer
             </li>
           </ul>
         </footer>
-        </div>
       </div>
     );
   }
