@@ -2,21 +2,17 @@ import React from 'react';
 import  Pin  from '../pin.svg';
 import EventBox from 'C:/Users/s1900169/summer-project/events-app/src/EventBox';
 
-
-  let Marker = ({ text }) => {
-
-      return (
-
-        <div style={{
-            color: 'red',
-            width: '30px',
-            height: 'auto',
-            padding: '20px'
-          }}><img src={Pin} onMouseEnter={someHandler}/></div>
-
+let Marker = ({ text }) => {
+  return (
+    <div style={{
+      color: 'red',
+      width: '30px',
+      height: 'auto',
+      padding: '20px'
+      }}><img src={Pin} onMouseEnter={someHandler}/>
+    </div>
       );
     }
-
 
     function someHandler(e) {
         e.preventDefault();
@@ -33,4 +29,5 @@ import EventBox from 'C:/Users/s1900169/summer-project/events-app/src/EventBox';
           </div>
         )
       };
+      
  export default Marker;
