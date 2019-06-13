@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import Marker from './Marker/Marker';
 =======
 
+>>>>>>> smth
+=======
+// import Marker from './Marker/Marker';
+
+let Marker = () => <div><img width="25" height="20" src='./pin.png'/></div>
 >>>>>>> smth
 
 class Map extends Component {
  static defaultProps = {
    center: {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
      lat: 60.2019475,
@@ -27,6 +34,12 @@ class Map extends Component {
    zoom: 12,
 >>>>>>> smth
 
+=======
+    lat: 60.1847984,
+    lng: 24.9389162,
+   },
+   zoom: 13,
+>>>>>>> smth
  };
  constructor (props){
    super(props)
@@ -80,6 +93,10 @@ onClose = props => {
             key={index}
             lat={el.lat}
             lng={el.lon}
+<<<<<<< HEAD
+=======
+            img_src={this.props.events.img_src}
+>>>>>>> smth
             onClick={this.onMarkerClick} />
          )
        } )
