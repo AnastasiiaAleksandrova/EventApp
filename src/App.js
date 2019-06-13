@@ -108,7 +108,7 @@ class App extends Component {
                     <div className='by-type'>
                       <li>
                         <label className='filter-button'>
-                          <RadioInput type='radio' name='filter_type' value='tags_search=teatteri' onChange={this.handleChange}/>
+                          <RadioInput type='radio' name='filter_type' value='tags_search=Teatteri' onChange={this.handleChange}/>
                           <span>Perfomances</span>
                         </label>
                       </li>
