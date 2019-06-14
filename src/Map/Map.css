@@ -1,0 +1,41 @@
+[id^="map-holder"] {
+  grid-column: 3/5;
+}
+
+#map-holder {
+  grid-row: 2/3;
+}
+
+.sticky {
+  position: sticky;
+  top: 2em;
+}
+
+.map-wrapper{
+  position: relative;
+  width: 100%;
+}
+
+.complex-box .map-wrapper {
+  display: none;
+  visibility: hidden;
+}
+
+@media all and (min-device-width: 280px) and (max-device-width: 500px) {
+
+  .map-events-holder {
+    grid-template-columns: auto;
+  }
+
+  .complex-box .map-wrapper {
+    display: block;
+    visibility: visible;
+  }
+
+  #map-holder {
+    display: none;
+    visibility: collapse;
+    width: 0;
+  }
+
+}

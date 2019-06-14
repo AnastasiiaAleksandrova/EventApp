@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-// import Map from './Map/Map';
 import MapContainer from './Map/MapContainer';
+
 
 import Header from './Header/Header';
 import RadioInput from './RadioInput';
@@ -68,7 +68,6 @@ class App extends Component {
 
   handleScroll() {
     if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
-
       console.log('load data')
       axios.get(`http://localhost:3001/api/?limit=${this.state.limit}&start=${this.state.start}&${this.state.filter_type}&${this.state.filter_lang}`)
         .then(result => {
@@ -80,8 +79,6 @@ class App extends Component {
         });
         console.log(this.state);
     }
-
-
   }
 
   componentDidMount() {
@@ -98,27 +95,23 @@ class App extends Component {
 
     return (
       <div className='App'>
-      <div className='header-holder'>
-        <Header />
-        <div id='logo-holder'>
-          <h1 id='logo'><span>in</span>Helsinki</h1>
-          <p id='sub-logo'>Esential City Guide</p>
+        <div className='header-holder'>
+          <Header />
+          <div id='logo-holder'>
+            <h1 id='logo'><span>in</span>Helsinki</h1>
+            <p id='sub-logo'>Esential City Guide</p>
+          </div>
         </div>
-        </div>
-        <div className='map-events-holder'>
         <nav>
           <ul className='main-menu'>
             <li className='main-menu-element'>Events
               <div className='sub-menu'>
                 <form>
-                  <div className='by-type-header'>
-                    By type
-                  </div>
                     <div className='by-type'>
                       <li>
                         <label className='filter-button'>
                           <RadioInput type='radio' name='filter_type' value='tags_search=Teatteri' onChange={this.handleChange}/>
-                          <span>Teatteri</span>
+                          <span>Perfomances</span>
                         </label>
                       </li>
                       <li>
@@ -129,43 +122,73 @@ class App extends Component {
                       </li>
                       <li>
                         <label className='filter-button'>
-                          <input type='radio' name='radio' value='' />
+                          <input type='radio' name='filter_type' value='tags_search=families' onChange={this.handleChange}/>
+                          <span>Families</span>
+                        </label>
+                      </li>
+                      <li>
+                        <label className='filter-button'>
+                          <input type='radio' name='filter_type' value='tags_search=games' onChange={this.handleChange}/>
+                          <span>Games</span>
+                        </label>
+                      </li>
+                      <li>
+                        <label className='filter-button'>
+                          <input type='radio' name='filter_type' value='tags_search=sports' onChange={this.handleChange}/>
+                          <span>Sports</span>
+                        </label>
+                      </li>
+                      <li>
+                        <label className='filter-button'>
+                          <input type='radio' name='filter_type' value='tags_search=dance' onChange={this.handleChange}/>
+                          <span>Dance</span>
+                        </label>
+                      </li>
+                      <li>
+                        <label className='filter-button'>
+                          <input type='radio' name='filter_type' value='tags_search=families' onChange={this.handleChange}/>
+                          <span>Families</span>
+                        </label>
+                      </li>
+                      <li>
+                        <label className='filter-button'>
+                          <input type='radio' name='filter_type' value='tags_search=exhibitions' onChange={this.handleChange}/>
                           <span>Exhibitions</span>
                         </label>
                       </li>
                       <li>
                         <label className='filter-button'>
-                          <input type='radio' name='radio' value='' />
-                          <span>Bars</span>
+                          <input type='radio' name='filter_type' value='tags_search=architecture' onChange={this.handleChange}/>
+                          <span>Architecture</span>
                         </label>
                       </li>
                       <li>
                         <label className='filter-button'>
-                          <input type='radio' name='radio' value='' />
-                          <span>Casino</span>
+                          <input type='radio' name='filter_type' value='tags_search=museums' onChange={this.handleChange}/>
+                          <span>Museums</span>
                         </label>
                       </li>
                       <li>
                         <label className='filter-button'>
-                          <input type='radio' name='radio' value='' />
-                          <span>Cheap Sluts</span>
+                          <input type='radio' name='filter_type' value='tags_search=christmas' onChange={this.handleChange}/>
+                          <span>Christmas</span>
                         </label>
                       </li>
                     </div>
                     <div className='by-language-header'>
-                      By language
+                      <i class="fas fa-language"></i>
                     </div>
                     <div className='by-language'>
                       <li>
                         <label className='filter-button'>
-                          <RadioInput type='radio' name='filter_lang' value='language_filter=sv' onChange={this.handleChange} />
-                          <span>Swedish</span>
+                          <RadioInput name='filter_lang' value='language_filter=fi' onChange={this.handleChange} />
+                          <span>Suomi</span>
                         </label>
                       </li>
                       <li>
                         <label className='filter-button'>
-                          <RadioInput name='filter_lang' value='language_filter=fi' onChange={this.handleChange} />
-                          <span>Finnish</span>
+                          <RadioInput type='radio' name='filter_lang' value='language_filter=sv' onChange={this.handleChange} />
+                          <span>Svenska</span>
                         </label>
                       </li>
                       <li>
@@ -174,23 +197,31 @@ class App extends Component {
                           <span>English</span>
                         </label>
                       </li>
+                      <li>
+                        <label className='filter-button'>
+                          <RadioInput type='radio' name='filter_lang' value='language_filter=ru' onChange={this.handleChange} />
+                          <span>Русский</span>
+                        </label>
+                      </li>
                     </div>
-                  <button onClick={this.handleSubmit}>Apply</button>
+                  <button id='apply-filter' onClick={this.handleSubmit}>Apply</button>
                 </form>
               </div>
             </li>
-            <li className = 'main-menu-element'>
-              Places
-            </li>
-            <li className = 'main-menu-element'>
-              Activities
-            </li>
+            {/*<li className = 'main-menu-element'>
+              /*Places
+            </li>*/}
+            {/*<li className = 'main-menu-element last'>
+               Activities
+            </li>*/}
           </ul>
         </nav>
-        <article>
-        {this.state.data.map((el, index) => {
-          return(
-            <EventBox
+        <div className='map-events-holder'>
+          <article>
+            {this.state.data.map((el, index) => {
+              return(
+                <div className="complex-box">
+                <EventBox
                       key={index}
                       name={el.name.fi}
                       address={el.location.address.street_address}
@@ -199,30 +230,34 @@ class App extends Component {
                       intro={el.description.intro}
                       image={el.img}
                       date={el.dates.slice(0,10).split("-").reverse().join(".")}
-                      time={el.dates.slice(11,16).split("-").reverse().join("/")} />
-            )
-          })
-         }
-         </article>
-         <div id='mapHolder'>
-          <aside className='sticky'>
-            <MapContainer events={this.state.pins} />
-          </aside>
+
+                      time={el.dates.slice(11,16).split("-").reverse().join("/")}
+                />
+                <Map style={{height: '30vh'}} events={[{lat: el.location.lat, lon: el.location.lon}]} />
+                </div>
+              )
+            })}
+          </article>
+          <div id='map-holder'>
+            <aside class='sticky'>
+            <Map style={{height: '94vh'}}  events={this.state.pins} />
+            </aside>
+          </div>
+
         </div>
         <footer>
-          <ul className='main-menu'>
-            <li className = 'main-menu-element'>
+          <ul className='footer-menu'>
+            <li className = 'footer-menu-element'>
               About
             </li>
-            <li className = 'main-menu-element'>
+            <li className = 'footer-menu-element'>
               Contact Us
             </li>
-            <li className = 'main-menu-element'>
+            <li className = 'footer-menu-element last'>
               Disclaimer
             </li>
           </ul>
         </footer>
-      </div>
       </div>
     );
   }
