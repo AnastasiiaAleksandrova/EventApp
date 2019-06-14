@@ -11,7 +11,7 @@ class App extends Component {
     super(props)
     this.state = {
      data: null,
-     limit: 2,
+     limit: 10,
      start: 0,
      filter_type: '',
      filter_lang: '',
