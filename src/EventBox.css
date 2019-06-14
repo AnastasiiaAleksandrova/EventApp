@@ -1,7 +1,7 @@
 .complex-box{
   display: grid;
   grid-template-columns: minmax(9em, 45em);
-  grid-template-rows: repeat(8, auto);
+  grid-template-rows: repeat(2, auto);
   border: 1px solid #e2e2e2;
   border-radius: 2px 2px;
   margin: 0 0 2em 1em;
