@@ -169,7 +169,7 @@ class App extends Component {
 
                     </div>
                     <div className='by-language-header'>
-                      <i class="fas fa-language"></i>
+                      <i className="fas fa-language"></i>
                     </div>
                     <div className='by-language'>
                       <li>
@@ -239,10 +239,10 @@ class App extends Component {
         })
        }
        </article>
-          
+
           <div id='map-holder'>
-            <aside class='sticky'>
-            <MapContainer style={{height: '94vh'}}  events={this.state.pins} />
+            <aside className='sticky'>
+            <MapContainer style={{height: '94vh'}}  events={this.state.data} />
             </aside>
           </div>
         </div>

@@ -13,7 +13,8 @@ import CurrentLocation from './CurrentLocation';
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {},
-      streetViewControl: true
+      streetViewControl: true,
+      names: []
     }
 
     // binding this to event-handler functions
@@ -49,16 +50,24 @@ import CurrentLocation from './CurrentLocation';
         google={this.props.google}
         style={style}
         onClick={this.onMapClicked}
+
       >
-    <Marker
-        onClick={this.onMarkerClick}  />
-         {this.props.events.map((el, index) => {
+
+   {this.props.events.map((el, index) => {
+
+     /*const unique = [...new Set(this.props.events.map(item => item.location.address.street_address))];
+     if (unique) {
+       this.state.names.push(el.name.fi);
+     }
+     console.log(this.state.names);*/
+
+
          return(
     <Marker
-
-            onClick={this.onMarkerClick}
-           position = {{ lat: el.lat, lng: el.lon }}
-           name={ el.street_address }
+        key={index}
+        onClick={this.onMarkerClick}
+        position = {{ lat: el.location.lat, lng: el.location.lon }}
+         name={el.name.fi}
 
             />
          )
@@ -67,9 +76,11 @@ import CurrentLocation from './CurrentLocation';
 
 
          <InfoWindow
+
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
           onClose={this.onClose}
+
         >
           <div>
             <h4>{this.state.selectedPlace.name}</h4>
