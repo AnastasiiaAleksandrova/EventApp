@@ -73,14 +73,11 @@ import CurrentLocation from './CurrentLocation';
          )
        } )
  }
-
-
          <InfoWindow
 
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
           onClose={this.onClose}
-
         >
           <div>
             <h4>{this.state.selectedPlace.name}</h4>
