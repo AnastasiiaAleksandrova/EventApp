@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import Map from './Map/Map';
+import MapContainer from './Map/MapContainer';
+
+
 import Header from './Header/Header';
 import RadioInput from './RadioInput';
 import EventBox from './EventBox';
@@ -228,6 +230,7 @@ class App extends Component {
                       intro={el.description.intro}
                       image={el.img}
                       date={el.dates.slice(0,10).split("-").reverse().join(".")}
+
                       time={el.dates.slice(11,16).split("-").reverse().join("/")}
                 />
                 <Map style={{height: '30vh'}} events={[{lat: el.location.lat, lon: el.location.lon}]} />
@@ -240,6 +243,7 @@ class App extends Component {
             <Map style={{height: '94vh'}}  events={this.state.pins} />
             </aside>
           </div>
+
         </div>
         <footer>
           <ul className='footer-menu'>
