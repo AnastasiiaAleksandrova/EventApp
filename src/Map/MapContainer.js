@@ -67,17 +67,20 @@ import CurrentLocation from './CurrentLocation';
         key={index}
         onClick={this.onMarkerClick}
         position = {{ lat: el.location.lat, lng: el.location.lon }}
-         name={el.name.fi}
-
+         name={el.location.address.street_address }
+         text="My Marker"
             />
          )
        } )
  }
+
+
          <InfoWindow
 
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
           onClose={this.onClose}
+
         >
           <div>
             <h4>{this.state.selectedPlace.name}</h4>
