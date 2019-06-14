@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
-
+import './Map.css';
 import CurrentLocation from './CurrentLocation';
 
 
@@ -15,7 +15,7 @@ import CurrentLocation from './CurrentLocation';
       selectedPlace: {},
       streetViewControl: true
     }
-  
+
     // binding this to event-handler functions
     this.onMarkerClick = this.onMarkerClick.bind(this);
     this.onMapClick = this.onMapClick.bind(this);
@@ -55,7 +55,7 @@ import CurrentLocation from './CurrentLocation';
          {this.props.events.map((el, index) => {
          return(
     <Marker
-           
+
             onClick={this.onMarkerClick}
            position = {{ lat: el.lat, lng: el.lon }}
            name={ el.street_address }
@@ -64,7 +64,7 @@ import CurrentLocation from './CurrentLocation';
          )
        } )
  }
-    
+
 
          <InfoWindow
           marker={this.state.activeMarker}

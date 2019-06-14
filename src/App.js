@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import MapContainer from './Map/MapContainer';
-
-
 import Header from './Header/Header';
 import RadioInput from './RadioInput';
 import EventBox from './EventBox';
@@ -168,12 +166,7 @@ class App extends Component {
                           <span>Museums</span>
                         </label>
                       </li>
-                      <li>
-                        <label className='filter-button'>
-                          <input type='radio' name='filter_type' value='tags_search=christmas' onChange={this.handleChange}/>
-                          <span>Christmas</span>
-                        </label>
-                      </li>
+
                     </div>
                     <div className='by-language-header'>
                       <i class="fas fa-language"></i>
@@ -208,20 +201,14 @@ class App extends Component {
                 </form>
               </div>
             </li>
-            {/*<li className = 'main-menu-element'>
-              /*Places
-            </li>*/}
-            {/*<li className = 'main-menu-element last'>
-               Activities
-            </li>*/}
           </ul>
         </nav>
         <div className='map-events-holder'>
           <article>
-            {this.state.data.map((el, index) => {
-              return(
-                <div className="complex-box">
-                <EventBox
+          {this.state.data.map((el, index) => {
+        if (el.dates) {
+          return(
+            <EventBox
                       key={index}
                       name={el.name.fi}
                       address={el.location.address.street_address}
@@ -230,20 +217,34 @@ class App extends Component {
                       intro={el.description.intro}
                       image={el.img}
                       date={el.dates.slice(0,10).split("-").reverse().join(".")}
-
                       time={el.dates.slice(11,16).split("-").reverse().join("/")}
-                />
-                <Map style={{height: '30vh'}} events={[{lat: el.location.lat, lon: el.location.lon}]} />
-                </div>
-              )
-            })}
-          </article>
+                      url={el.url}
+                      />
+            )
+        } else {
+          return(
+            <EventBox
+                      key={index}
+                      name={el.name.fi}
+                      address={el.location.address.street_address}
+                      postcode={el.location.address.postal_code}
+                      city={el.location.address.locality}
+                      intro={el.description.intro}
+                      image={el.img}
+                      url={el.url}
+                       />
+            )
+        }
+
+        })
+       }
+       </article>
+          
           <div id='map-holder'>
             <aside class='sticky'>
-            <Map style={{height: '94vh'}}  events={this.state.pins} />
+            <MapContainer style={{height: '94vh'}}  events={this.state.pins} />
             </aside>
           </div>
-
         </div>
         <footer>
           <ul className='footer-menu'>
