@@ -49,9 +49,8 @@ class MapContainer extends Component {
         if (unique) {
           this.state.names.push(el.name.fi);
         }
-
 */
-        
+
         return(
 
           <Marker
