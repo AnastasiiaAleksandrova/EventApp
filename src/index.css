@@ -11,7 +11,7 @@ html, body, #root, .App {
   position: relative;
   width: 100%;
   padding: 0;
-  margin: 0;
+  margin: 0 0 2em 0;
 }
 
 .map-events-holder {
@@ -163,7 +163,6 @@ article {
   /*1/5*/
   grid-row: 2/3;
   min-height: 100vh;
-  margin-left: 1em;
   background-color: white;
 }
 
@@ -177,6 +176,10 @@ aside {
 }
 
 footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   min-height: 5vh;
   margin-top: 1em;
   background-color: #292929;
@@ -202,7 +205,7 @@ footer ul {
 
 @media all and (min-device-width: 280px) and (max-device-width: 500px) {
   .App {
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
   }
 
   .sub-menu {

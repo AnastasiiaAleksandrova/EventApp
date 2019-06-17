@@ -208,7 +208,8 @@ class App extends Component {
           {this.state.data.map((el, index) => {
         if (el.dates) {
           return(
-            <EventBox
+            <div className="complex-box">
+              <EventBox
                       key={index}
                       name={el.name.fi}
                       address={el.location.address.street_address}
@@ -219,11 +220,14 @@ class App extends Component {
                       date={el.dates.slice(0,10).split("-").reverse().join(".")}
                       time={el.dates.slice(11,16).split("-").reverse().join("/")}
                       url={el.url}
-                      />
-            )
+              />
+              <MapContainer style={{height: '30vh'}} events={this.state.data} />
+            </div>
+          )
         } else {
           return(
-            <EventBox
+            <div className="complex-box">
+              <EventBox
                       key={index}
                       name={el.name.fi}
                       address={el.location.address.street_address}
@@ -232,14 +236,14 @@ class App extends Component {
                       intro={el.description.intro}
                       image={el.img}
                       url={el.url}
-                       />
-            )
+              />
+              <MapContainer style={{height: '30vh'}} events={this.state.data} />
+            </div>
+          )
         }
-
         })
        }
        </article>
-
           <div id='map-holder'>
             <aside className='sticky'>
             <MapContainer style={{height: '94vh'}}  events={this.state.data} />
