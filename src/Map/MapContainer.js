@@ -49,6 +49,7 @@ class MapContainer extends Component {
         if (unique) {
           this.state.names.push(el.name.fi);
         }
+
 */
         
         return(
@@ -68,14 +69,12 @@ class MapContainer extends Component {
             visible={this.state.showingInfoWindow}
             onClose={this.onClose}
           >
-
             <div>
               <h4>{this.state.selectedPlace.name}</h4>
             </div>
           </InfoWindow>
         </CurrentLocation>
       </div>
-
     );
   }
 }

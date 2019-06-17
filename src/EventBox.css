@@ -1,4 +1,4 @@
-.complex-box{
+.EventBox{
   display: grid;
   grid-template-columns: minmax(9em, 45em);
   grid-template-rows: repeat(8, auto);
@@ -7,6 +7,7 @@
   margin: 0 0 2em 1em;
   padding: 1em;
 }
+
 
 .event-box{
   display: grid;
@@ -33,38 +34,25 @@ img:hover{
   transform: scale(1.05);
 }
 
-.name, .address, .intro, .date-n-time, .event-url {
+
+.name, .address, .intro {
   margin: 0 0 1em 0;
   font-family: "Hind";
-  font-size: 0.875em;
 }
 
 .name{
   grid-row: 4/5;
   font-weight: 600;
+  font-size: 0.875em;
   margin-top: 1em;
 }
 
 .address{
 grid-row: 5/6;
-}
-
-.date-n-time{
-  grid-row: 6/7;
+font-size: 0.875em;
 }
 
 .intro{
-  grid-row: 7/8;
-}
-
-.event-url{
-  grid-row: 8/9;
-}
-
-@media all and (min-device-width: 280px) and (max-device-width: 500px){
-
-  .complex-box{
-    margin: 0 1em 2em 1em;
-  }
-
+grid-row: 6/7;
+font-size: 0.875em;
 }
