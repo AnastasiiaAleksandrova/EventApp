@@ -49,29 +49,25 @@ class MapContainer extends Component {
         if (unique) {
           this.state.names.push(el.name.fi);
         }
-*/
-
-        return(
-
-          <Marker
-            key={index}
-            onClick={this.onMarkerClick}
-            position = {{lat: el.location.lat, lng: el.location.lon}}
-            name={el.location.address.street_address}
-                    />
-
-        );
-
-      })}
-          <InfoWindow
-            marker={this.state.activeMarker}
-            visible={this.state.showingInfoWindow}
-            onClose={this.onClose}
-          >
-            <div>
-              <h4>{this.state.selectedPlace.name}</h4>
-            </div>
-          </InfoWindow>
+        */
+          return(
+            <Marker
+              key={index}
+              onClick={this.onMarkerClick}
+              position = {{lat: el.location.lat, lng: el.location.lon}}
+              name={el.location.address.street_address}
+            />
+          );
+        })}
+        <InfoWindow
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}
+          onClose={this.onClose}
+        >
+        <div>
+          <h4>{this.state.selectedPlace.name}</h4>
+        </div>
+        </InfoWindow>
         </CurrentLocation>
       </div>
     );

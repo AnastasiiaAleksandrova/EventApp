@@ -16,8 +16,16 @@
   width: 100%;
 }
 
+.complex-box{
+margin: 0 0 1em 1em;
+padding: 1em;
+border: 1px solid #e2e2e2;
+border-radius: 2px 2px;
+}
+
 .complex-box .map-wrapper {
   display: none;
+  width: 100%;
   visibility: hidden;
 }
 
@@ -25,6 +33,14 @@
 
   .map-events-holder {
     grid-template-columns: auto;
+  }
+
+  .complex-box{
+    padding: 1em;
+    margin: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
   }
 
   .complex-box .map-wrapper {

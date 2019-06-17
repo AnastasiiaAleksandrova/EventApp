@@ -1,22 +1,7 @@
-.EventBox{
-  display: grid;
-  grid-template-columns: minmax(9em, 45em);
-  grid-template-rows: repeat(8, auto);
-  border: 1px solid #e2e2e2;
-  border-radius: 2px 2px;
-  margin: 0 0 2em 1em;
-  padding: 1em;
-}
-
-
 .event-box{
   display: grid;
   grid-template-columns: minmax(9em, 45em);
   grid-template-rows: repeat(8, auto);
-  /* border: 1px solid #e2e2e2; */
-  /* border-radius: 2px 2px; */
-  /* margin: 0 0 2em 1em; */
-  /* padding: 1em; */
 }
 
 .image-holder {
@@ -65,4 +50,15 @@ font-size: 0.875em;
 .event-url{
 grid-row: 8/9;
 font-size: 0.875em;
+}
+
+
+@media all and (min-device-width: 280px) and (max-device-width: 500px) {
+  .event-box{
+    margin: 0;
+  }
+
+  .map-wrapper{
+
+  }
 }
