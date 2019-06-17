@@ -37,19 +37,11 @@ class MapContainer extends Component {
   }
 
   render() {
-    //const style = {
-      //width: '100%',
-      //height: '94vh',
-      //position:'relative',
-      //marginLeft: 'auto',
-      //marginRight: 'auto'
-    //}
     return (
       <div className='map-wrapper' style={this.props.style}>
         <CurrentLocation
           centerAroundCurrentLocation
           google={this.props.google}
-          //style={style}
           onClick={this.onMapClicked}
         >
         {this.props.events.map((el, index) => {
@@ -57,16 +49,20 @@ class MapContainer extends Component {
         if (unique) {
           this.state.names.push(el.name.fi);
         }
-        console.log(this.state.names);*/
+
+*/
+        
         return(
+
           <Marker
             key={index}
             onClick={this.onMarkerClick}
-            position = {{ lat: el.location.lat, lng: el.location.lon }}
+            position = {{lat: el.location.lat, lng: el.location.lon}}
             name={el.location.address.street_address}
-            text="My Marker"
-          />
-        )
+                    />
+
+        );
+
       })}
           <InfoWindow
             marker={this.state.activeMarker}
