@@ -35,7 +35,7 @@ img:hover{
 }
 
 
-.name, .address, .intro {
+.name, .address, .intro, .date-n-time, .event-url {
   margin: 0 0 1em 0;
   font-family: "Hind";
 }
@@ -47,12 +47,22 @@ img:hover{
   margin-top: 1em;
 }
 
-.address{
+.address {
 grid-row: 5/6;
 font-size: 0.875em;
 }
 
-.intro{
+.intro {
 grid-row: 6/7;
+font-size: 0.875em;
+}
+
+.date-n-time {
+grid-row: 7/8;
+font-size: 0.875em;
+}
+
+.event-url{
+grid-row: 8/9;
 font-size: 0.875em;
 }

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Map from './Map/Map';
+import MapContainer from './Map/MapContainer';
 
 import Header from './Header/Header';
 import RadioInput from './RadioInput';
@@ -74,14 +74,13 @@ class App extends Component {
 
     return (
       <div className='App'>
-      <div className='header-holder'>
-        <Header />
-        <div id='logo-holder'>
-          <h1 id='logo'><span>in</span>Helsinki</h1>
-          <p id='sub-logo'>Esential City Guide</p>
+        <div className='header-holder'>
+          <Header />
+          <div id='logo-holder'>
+            <h1 id='logo'><span>in</span>Helsinki</h1>
+            <p id='sub-logo'>Esential City Guide</p>
+          </div>
         </div>
-        </div>
-        <div className='map-events-holder'>
         <nav>
           <ul className='main-menu'>
             <li className='main-menu-element'>Events
