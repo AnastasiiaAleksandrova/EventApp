@@ -88,10 +88,17 @@ function getNeededInfo(arr) {
           temp.description = arr[i].description;
           temp.location = arr[i].location;
           temp.dates = arr[i].event_dates.starting_day;
+          if (arr[i].info_url == 0 || arr[i].info_url == null) {
+          temp.url = ' ';
+
+          } else {
+            temp.url = arr[i].info_url;
+          }
+          
           result.push(temp);
 
         }
-        console.log(result.img);
+        console.log(result.info_url);
         return result;
 }
 

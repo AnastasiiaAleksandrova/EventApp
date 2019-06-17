@@ -207,6 +207,7 @@ class App extends Component {
           <article>
           {this.state.data.map((el, index) => {
         if (el.dates) {
+          console.log(el.url);
           return(
             <EventBox
                       key={index}
@@ -222,6 +223,7 @@ class App extends Component {
                       />
             )
         } else {
+          console.log(el.url);
           return(
             <EventBox
                       key={index}
