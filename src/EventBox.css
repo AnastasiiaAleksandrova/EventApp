@@ -1,7 +1,7 @@
 .complex-box{
   display: grid;
   grid-template-columns: minmax(9em, 45em);
-  grid-template-rows: repeat(2, auto);
+  grid-template-rows: repeat(8, auto);
   border: 1px solid #e2e2e2;
   border-radius: 2px 2px;
   margin: 0 0 2em 1em;
@@ -12,10 +12,10 @@
   display: grid;
   grid-template-columns: minmax(9em, 45em);
   grid-template-rows: repeat(8, auto);
-  border: 1px solid #e2e2e2;
-  border-radius: 2px 2px;
-  margin-bottom: 1em;
-  padding: 1em;
+  /* border: 1px solid #e2e2e2; */
+  /* border-radius: 2px 2px; */
+  /* margin: 0 0 2em 1em; */
+  /* padding: 1em; */
 }
 
 .image-holder {

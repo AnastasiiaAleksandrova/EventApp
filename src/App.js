@@ -204,43 +204,46 @@ class App extends Component {
           </ul>
         </nav>
         <div className='map-events-holder'>
-          <article>
-          {this.state.data.map((el, index) => {
-        if (el.dates) {
-          console.log(el.url);
-          return(
-            <EventBox
-                      key={index}
-                      name={el.name.fi}
-                      address={el.location.address.street_address}
-                      postcode={el.location.address.postal_code}
-                      city={el.location.address.locality}
-                      intro={el.description.intro}
-                      image={el.img}
-                      date={el.dates.slice(0,10).split("-").reverse().join(".")}
-                      time={el.dates.slice(11,16).split("-").reverse().join("/")}
-                      url={el.url}
-                      />
-            )
-        } else {
-          console.log(el.url);
-          return(
-            <EventBox
-                      key={index}
-                      name={el.name.fi}
-                      address={el.location.address.street_address}
-                      postcode={el.location.address.postal_code}
-                      city={el.location.address.locality}
-                      intro={el.description.intro}
-                      image={el.img}
-                      url={el.url}
-                       />
-            )
-        }
-
-        })
-       }
-       </article>
+        <article>
+       {this.state.data.map((el, index) => {
+     if (el.dates) {
+       return(
+         <div className="complex-box">
+           <EventBox
+                   key={index}
+                   name={el.name.fi}
+                   address={el.location.address.street_address}
+                   postcode={el.location.address.postal_code}
+                   city={el.location.address.locality}
+                   intro={el.description.intro}
+                   image={el.img}
+                   date={el.dates.slice(0,10).split("-").reverse().join(".")}
+                   time={el.dates.slice(11,16).split("-").reverse().join("/")}
+                   url={el.url}
+           />
+           <MapContainer style={{height: '30vh'}} events={this.state.data} />
+         </div>
+       )
+     } else {
+       return(
+         <div className="complex-box">
+           <EventBox
+                   key={index}
+                   name={el.name.fi}
+                   address={el.location.address.street_address}
+                   postcode={el.location.address.postal_code}
+                   city={el.location.address.locality}
+                   intro={el.description.intro}
+                   image={el.img}
+                   url={el.url}
+           />
+           <MapContainer style={{height: '30vh'}} events={this.state.data} />
+         </div>
+       )
+     }
+     })
+    }
+    </article>
 
           <div id='map-holder'>
             <aside className='sticky'>
@@ -249,20 +252,20 @@ class App extends Component {
           </div>
         </div>
         <footer>
-          <ul className='footer-menu'>
-            <li className = 'footer-menu-element'>
-              About
-            </li>
-            <li className = 'footer-menu-element'>
-              Contact Us
-            </li>
-            <li className = 'footer-menu-element last'>
-              Disclaimer
-            </li>
-          </ul>
-        </footer>
-      </div>
-    );
+            <ul className='footer-menu'>
+              <li className = 'footer-menu-element'>
+                About
+              </li>
+              <li className = 'footer-menu-element'>
+                Contact Us
+              </li>
+              <li className = 'footer-menu-element last'>
+                Disclaimer
+              </li>
+            </ul>
+          </footer>
+        </div>
+      );
+    }
   }
-}
-export default App;
+  export default App;
