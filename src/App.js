@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Map from './Map/Map';
+import MapContainer from './Map/MapContainer';
 
 import Header from './Header/Header';
 import RadioInput from './RadioInput';
@@ -74,90 +74,123 @@ class App extends Component {
 
     return (
       <div className='App'>
-      <div className='header-holder'>
-        <Header />
+        <div className='header-holder'>
+          <Header />
         <div id='logo-holder'>
           <h1 id='logo'><span>in</span>Helsinki</h1>
           <p id='sub-logo'>Esential City Guide</p>
         </div>
         </div>
-        <div className='map-events-holder'>
+
         <nav>
-          <ul className='main-menu'>
-            <li className='main-menu-element'>Events
-              <div className='sub-menu'>
-                <form>
-                  <div className='by-type-header'>
-                    Type
+        <ul className='main-menu'>
+          <li className='main-menu-element'>Events
+            <div className='sub-menu'>
+              <form>
+                  <div className='by-type'>
+                    <li>
+                      <label className='filter-button'>
+                        <RadioInput type='radio' name='filter_type' value='tags_search=Teatteri' onChange={this.handleChange}/>
+                        <span>Perfomances</span>
+                      </label>
+                    </li>
+                    <li>
+                      <label className='filter-button'>
+                        <RadioInput type='radio' name='filter_type' value='tags_search=music' onChange={this.handleChange}/>
+                        <span>Music</span>
+                      </label>
+                    </li>
+                    <li>
+                      <label className='filter-button'>
+                        <input type='radio' name='filter_type' value='tags_search=families' onChange={this.handleChange}/>
+                        <span>Families</span>
+                      </label>
+                    </li>
+                    <li>
+                      <label className='filter-button'>
+                        <input type='radio' name='filter_type' value='tags_search=games' onChange={this.handleChange}/>
+                        <span>Games</span>
+                      </label>
+                    </li>
+                    <li>
+                      <label className='filter-button'>
+                        <input type='radio' name='filter_type' value='tags_search=sports' onChange={this.handleChange}/>
+                        <span>Sports</span>
+                      </label>
+                    </li>
+                    <li>
+                      <label className='filter-button'>
+                        <input type='radio' name='filter_type' value='tags_search=dance' onChange={this.handleChange}/>
+                        <span>Dance</span>
+                      </label>
+                    </li>
+                    <li>
+                      <label className='filter-button'>
+                        <input type='radio' name='filter_type' value='tags_search=families' onChange={this.handleChange}/>
+                        <span>Families</span>
+                      </label>
+                    </li>
+                    <li>
+                      <label className='filter-button'>
+                        <input type='radio' name='filter_type' value='tags_search=exhibitions' onChange={this.handleChange}/>
+                        <span>Exhibitions</span>
+                      </label>
+                    </li>
+                    <li>
+                      <label className='filter-button'>
+                        <input type='radio' name='filter_type' value='tags_search=architecture' onChange={this.handleChange}/>
+                        <span>Architecture</span>
+                      </label>
+                    </li>
+                    <li>
+                      <label className='filter-button'>
+                        <input type='radio' name='filter_type' value='tags_search=museums' onChange={this.handleChange}/>
+                        <span>Museums</span>
+                      </label>
+                    </li>
                   </div>
-                    <div className='by-type'>
-                      <li>
-                        <label className='filter-button'>
-                          <RadioInput type='radio' name='filter_type' value='tags_search=teatteri' onChange={this.handleChange}/>
-                          <span>Performances</span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className='filter-button'>
-                          <RadioInput type='radio' name='filter_type' value='tags_search=music' onChange={this.handleChange}/>
-                          <span>Concerts</span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className='filter-button'>
-                          <input type='radio' name='radio' value='' />
-                          <span>Exhibitions</span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className='filter-button'>
-                          <input type='radio' name='radio' value='' />
-                          <span>Sports</span>
-                        </label>
-                      </li>
-                    </div>
-                    <div className='by-language-header'>
-                      Language
-                    </div>
-                    <div className='by-language'>
-                      <li>
-                        <label className='filter-button'>
-                          <RadioInput type='radio' name='filter_lang' value='language_filter=sv' onChange={this.handleChange} />
-                          <span>Swedish</span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className='filter-button'>
-                          <RadioInput name='filter_lang' value='language_filter=fi' onChange={this.handleChange} />
-                          <span>Finnish</span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className='filter-button'>
-                          <RadioInput type='radio' name='filter_lang' value='language_filter=en' onChange={this.handleChange} />
-                          <span>English</span>
-                        </label>
-                      </li>
-                    </div>
-                  <button onClick={this.handleSubmit}>Apply</button>
-                </form>
-              </div>
-            </li>
-            <li className = 'main-menu-element'>
-              Places
-            </li>
-            <li className = 'main-menu-element'>
-              Activities
-            </li>
-          </ul>
-        </nav>
+                  <div className='by-language-header'>
+                    <i className="fas fa-language"></i>
+                  </div>
+                  <div className='by-language'>
+                    <li>
+                      <label className='filter-button'>
+                        <RadioInput name='filter_lang' value='language_filter=fi' onChange={this.handleChange} />
+                        <span>Suomi</span>
+                      </label>
+                    </li>
+                    <li>
+                      <label className='filter-button'>
+                        <RadioInput type='radio' name='filter_lang' value='language_filter=sv' onChange={this.handleChange} />
+                        <span>Svenska</span>
+                      </label>
+                    </li>
+                    <li>
+                      <label className='filter-button'>
+                        <RadioInput type='radio' name='filter_lang' value='language_filter=en' onChange={this.handleChange} />
+                        <span>English</span>
+                      </label>
+                    </li>
+                    <li>
+                      <label className='filter-button'>
+                        <RadioInput type='radio' name='filter_lang' value='language_filter=ru' onChange={this.handleChange} />
+                        <span>Русский</span>
+                      </label>
+                    </li>
+                  </div>
+                <button id='apply-filter' onClick={this.handleSubmit}>Apply</button>
+              </form>
+            </div>
+          </li>
+        </ul>
+      </nav>
         <div className='map-events-holder'>
         <article>
        {this.state.data.map((el, index) => {
-     if (el.dates) {
-       return(
-         <div className="complex-box">
-           <EventBox
+         if (el.dates) {
+           return(
+             <div className="complex-box">
+              <EventBox
                    key={index}
                    name={el.name.fi}
                    address={el.location.address.street_address}
@@ -168,9 +201,9 @@ class App extends Component {
                    date={el.dates.slice(0,10).split("-").reverse().join(".")}
                    time={el.dates.slice(11,16).split("-").reverse().join("/")}
                    url={el.url}
-           />
-           <MapContainer style={{height: '30vh'}} events={this.state.data} />
-         </div>
+                  />
+              <MapContainer style={{height: '30vh'}} events={this.state.data} />
+            </div>
        )
      } else {
        return(
@@ -193,27 +226,28 @@ class App extends Component {
     }
     </article>
 
-          <div id='map-holder'>
-            <aside className='sticky'>
-            <MapContainer style={{height: '94vh'}}  events={this.state.data} />
-            </aside>
+              <div id='map-holder'>
+                <aside className='sticky'>
+                <MapContainer style={{height: '94vh'}}  events={this.state.data} />
+                </aside>
+              </div>
+            </div>
+
+            <footer>
+              <ul className='footer-menu'>
+                <li className = 'footer-menu-element'>
+                  About
+                </li>
+                <li className = 'footer-menu-element'>
+                  Contact Us
+                </li>
+                <li className = 'footer-menu-element last'>
+                  Disclaimer
+                </li>
+              </ul>
+            </footer>
           </div>
-        </div>
-        <footer>
-            <ul className='footer-menu'>
-              <li className = 'footer-menu-element'>
-                About
-              </li>
-              <li className = 'footer-menu-element'>
-                Contact Us
-              </li>
-              <li className = 'footer-menu-element last'>
-                Disclaimer
-              </li>
-            </ul>
-          </footer>
-        </div>
-      );
+        );
+      }
     }
-  }
-  export default App;
+    export default App;
