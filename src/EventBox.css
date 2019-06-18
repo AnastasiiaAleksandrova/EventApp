@@ -1,11 +1,27 @@
+.complex-box{
+  display: grid;
+  grid-template-columns: minmax(9em, 45em);
+  grid-template-rows: repeat(8, auto);
+  border: 1px solid #e2e2e2;
+  border-radius: 2px 2px;
+  margin: 0 0 2em 1em;
+  padding: 1em;
+}
+
 .event-box{
   display: grid;
   grid-template-columns: minmax(9em, 45em);
   grid-template-rows: repeat(8, auto);
+  /* border: 1px solid #e2e2e2; */
+  /* border-radius: 2px 2px; */
+  /* margin: 0 0 2em 1em; */
+  /* padding: 1em; */
 }
 
 .image-holder {
   grid-row: 1/4;
+  pointer-events: none;
+
 }
 
 img {
@@ -13,44 +29,48 @@ img {
   height:100%;
   object-fit: cover;
   transition: transform 200ms linear;
+  pointer-events: none;
+
 }
 
 img:hover{
   transform: scale(1.05);
 }
 
-
-.name, .address, .intro, .date-n-time, .event-url {
+.name, .address, .intro, .date-n-time {
   margin: 0 0 1em 0;
   font-family: "Hind";
+  font-size: 0.875em;
+  pointer-events: none;
 }
-
+.event-url a {
+  text-decoration: none;
+}
+.event-url a:hover {
+  text-decoration: underline;
+}
 .name{
   grid-row: 4/5;
   font-weight: 600;
-  font-size: 0.875em;
   margin-top: 1em;
 }
 
-.address {
+.address{
 grid-row: 5/6;
-font-size: 0.875em;
 }
 
-.intro {
-grid-row: 6/7;
-font-size: 0.875em;
+.date-n-time{
+  grid-row: 6/7;
 }
 
-.date-n-time {
-grid-row: 7/8;
-font-size: 0.875em;
+.intro{
+  grid-row: 7/8;
 }
 
 .event-url{
-grid-row: 8/9;
-font-size: 0.875em;
+  grid-row: 8/9;
 }
+
 
 
 @media all and (min-device-width: 280px) and (max-device-width: 500px) {
