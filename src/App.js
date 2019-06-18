@@ -18,18 +18,12 @@ function scrollFunction() {
   }
 }
 
-function backtotopFunction() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
-}
-
 class App extends Component {
 
   constructor (props){
     super(props)
     this.state = {
      data: null,
-
      pins: null,
      limit: 5,
      start: 0,
@@ -38,8 +32,6 @@ class App extends Component {
      filter_distance: '20',
      position: {lat: 60.16952, lon: 24.93545},
      selectedEvent: null
-
-
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -48,7 +40,7 @@ class App extends Component {
     this.handleScroll = this.handleScroll.bind(this);
     this.getPosition = this.getPosition.bind(this);
     this.handleEventClick= this.handleEventClick.bind(this);
-    this.scrollToTop = this.scrollToTop.bind(this); //scroller
+    this.scrollToTop = this.scrollToTop.bind(this);
   }
 
   getPosition() {
