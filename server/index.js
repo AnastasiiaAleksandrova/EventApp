@@ -45,13 +45,14 @@ app.get('/api/pins/', (req, res) => {
 })
 
 class Location {
-  constructor(lat, lon) {
+  constructor(lat, lon, address) {
     this.lat = lat;
     this.lon = lon;
+    this.address = address;
   }
 
   toString() {
-    return `${this.lat} ${this.lon}`
+    return `${this.lat} ${this.lon} ${this.address}`
   }
 }
 
@@ -59,7 +60,7 @@ class Location {
 function getPins(arr) {
   let locationSet = new Set();
 
-  return arr.map(el => new Location(el.location.lat, el.location.lon))
+  return arr.map(el => new Location(el.location.lat, el.location.lon, el.location.address.street_address))
     .filter(elem => {
       if (!locationSet.has(elem.toString())) {
         locationSet.add(elem.toString())
@@ -76,6 +77,7 @@ function getNeededInfo(arr) {
   let result = [];
         for (let i = 0; i < arr.length; i++) {
           let temp = {};
+          temp.id = arr[i].id;
           temp.name = arr[i].name;
             if (arr[i].description.images.length == 0) {
             temp.img = 'https://ss.metronews.ru/userfiles/materials/125/1258933/858x540.jpg';
@@ -93,11 +95,10 @@ function getNeededInfo(arr) {
           } else {
             temp.url = arr[i].info_url;
           }
-          
           result.push(temp);
 
         }
-        console.log(result.info_url);
+        console.log(result.img);
         return result;
 }
 

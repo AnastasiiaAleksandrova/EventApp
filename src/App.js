@@ -11,10 +11,16 @@ class App extends Component {
     super(props)
     this.state = {
      data: null,
-     limit: 10,
+
+     pins: null,
+     limit: 5,
      start: 0,
      filter_type: '',
      filter_lang: '',
+     filter_distance: '20',
+     position: {lat: 60.16952, lon: 24.93545},
+     selectedEvent: null
+
 
     }
     this.handleChange = this.handleChange.bind(this);
@@ -22,10 +28,23 @@ class App extends Component {
     this.getEvents = this.getEvents.bind(this);
     this.getPins = this.getPins.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
+    this.getPosition = this.getPosition.bind(this);
+    this.handleEventClick= this.handleEventClick.bind(this);
+  }
+
+  getPosition() {
+    navigator.geolocation.getCurrentPosition(position => {
+      this.setState(state => {
+        state.position = {lat: position.coords.latitude, lon: position.coords.longitude};
+        return state;
+      });
+      console.log(position.coords.latitude, position.coords.longitude)
+    });
   }
 
   getEvents() {
-    axios.get(`http://localhost:3001/api/?limit=${this.state.limit}&${this.state.filter_type}&${this.state.filter_lang}`)
+    axios.get(`http://localhost:3001/api/?limit=${this.state.limit}&${this.state.filter_type}&${this.state.filter_lang}&distance_filter=${this.state.position.lat},${this.state.position.lon},${this.state.filter_distance}`)
+
     .then(result => {
       this.setState(state => {
         state.data = result.data;
@@ -37,7 +56,7 @@ class App extends Component {
   }
 
   getPins() {
-    axios.get(`http://localhost:3001/api/pins/?${this.state.filter_type}&${this.state.filter_lang}`)
+    axios.get(`http://localhost:3001/api/pins/?${this.state.filter_type}&${this.state.filter_lang}&distance_filter=${this.state.position.lat},${this.state.position.lon},${this.state.filter_distance}`)
     .then(result => {
       this.setState(state => {
         state.pins = result.data;
@@ -67,6 +86,32 @@ class App extends Component {
   handleScroll() {
     if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
       console.log('load data')
+      axios.get(`http://localhost:3001/api/?limit=${this.state.limit}&start=${this.state.start}&${this.state.filter_type}&${this.state.filter_lang}&distance_filter=${this.state.position.lat},${this.state.position.lon},${this.state.filter_distance}`)
+        .then(result => {
+          this.setState(state => {
+            state.data = [ ...this.state.data, ...result.data];
+            state.start = this.state.data.length + 1;
+            return state;
+          });
+        });
+        console.log(this.state);
+    }
+  }
+
+  handleEventClick(event) {
+    let id = event.target.id;
+    this.setState(state => {
+      //console.log(id)
+      state.selectedEvent = state.data[id];
+      return state;
+
+    });
+    console.log(this.state);
+  }
+
+  handleScroll() {
+    if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
+      console.log('load data')
       axios.get(`http://localhost:3001/api/?limit=${this.state.limit}&start=${this.state.start}&${this.state.filter_type}&${this.state.filter_lang}`)
         .then(result => {
           this.setState(state => {
@@ -80,12 +125,14 @@ class App extends Component {
   }
 
   componentDidMount() {
+    this.getPosition();
     this.getEvents();
     this.getPins();
     window.addEventListener('scroll', this.handleScroll)
   }
 
   render() {
+
 
     if (!this.state.data || !this.state.pins){
       return null;
@@ -122,10 +169,12 @@ class App extends Component {
                         <label className='filter-button'>
                           <input type='radio' name='filter_type' value='tags_search=families' onChange={this.handleChange}/>
                           <span>Families</span>
+
                         </label>
                       </li>
                       <li>
                         <label className='filter-button'>
+
                           <input type='radio' name='filter_type' value='tags_search=games' onChange={this.handleChange}/>
                           <span>Games</span>
                         </label>
@@ -197,6 +246,33 @@ class App extends Component {
                         </label>
                       </li>
                     </div>
+
+                    <div className='by-distance'>
+                      <li>
+                        <label className='filter-button'>
+                          <RadioInput name='filter_distance' value='1' onChange={this.handleChange} />
+                          <span>1 km</span>
+                        </label>
+                      </li>
+                      <li>
+                        <label className='filter-button'>
+                          <RadioInput type='radio' name='filter_distance' value='5' onChange={this.handleChange} />
+                          <span>5 km</span>
+                        </label>
+                      </li>
+                      <li>
+                        <label className='filter-button'>
+                          <RadioInput type='radio' name='filter_distance' value='10' onChange={this.handleChange} />
+                          <span>10 km</span>
+                        </label>
+                      </li>
+                      <li>
+                        <label className='filter-button'>
+                          <RadioInput type='radio' name='filter_distance' value='15' onChange={this.handleChange} />
+                          <span>15 km</span>
+                        </label>
+                      </li>
+                    </div>
                   <button id='apply-filter' onClick={this.handleSubmit}>Apply</button>
                 </form>
               </div>
@@ -204,68 +280,76 @@ class App extends Component {
           </ul>
         </nav>
         <div className='map-events-holder'>
-        <article>
-       {this.state.data.map((el, index) => {
-     if (el.dates) {
-       return(
-         <div className="complex-box">
-           <EventBox
-                   key={index}
-                   name={el.name.fi}
-                   address={el.location.address.street_address}
-                   postcode={el.location.address.postal_code}
-                   city={el.location.address.locality}
-                   intro={el.description.intro}
-                   image={el.img}
-                   date={el.dates.slice(0,10).split("-").reverse().join(".")}
-                   time={el.dates.slice(11,16).split("-").reverse().join("/")}
-                   url={el.url}
-           />
-           <MapContainer style={{height: '30vh'}} events={this.state.data} />
-         </div>
-       )
-     } else {
-       return(
-         <div className="complex-box">
-           <EventBox
-                   key={index}
-                   name={el.name.fi}
-                   address={el.location.address.street_address}
-                   postcode={el.location.address.postal_code}
-                   city={el.location.address.locality}
-                   intro={el.description.intro}
-                   image={el.img}
-                   url={el.url}
-           />
-           <MapContainer style={{height: '30vh'}} events={this.state.data} />
-         </div>
-       )
-     }
-     })
-    }
-    </article>
-
+          <article>
+          {this.state.data.map((el, index) => {
+        if (el.dates) {
+          return(
+            <div className="complex-box">
+              <EventBox
+                key={index}
+                id={index}
+                name={el.name.fi}
+                address={el.location.address.street_address}
+                postcode={el.location.address.postal_code}
+                city={el.location.address.locality}
+                intro={el.description.intro}
+                image={el.img}
+                date={el.dates.slice(0,10).split("-").reverse().join(".")}
+                time={el.dates.slice(11,16).split("-").reverse().join("/")}
+                url={el.url}
+                onClick={this.handleEventClick}
+              />
+              <MapContainer style={{height: '30vh'}} center={{lat: this.state.position.lat, lng: this.state.position.lon}}
+                events={this.state.pins} selectedEvent={this.state.selectedEvent}
+              />
+              </div>
+            )
+        } else {
+          return(
+            <div className="complex-box">
+              <EventBox
+                key={index}
+                id={index}
+                name={el.name.fi}
+                address={el.location.address.street_address}
+                postcode={el.location.address.postal_code}
+                city={el.location.address.locality}
+                intro={el.description.intro}
+                image={el.img}
+                url={el.url}
+                onClick={this.handleEventClick}
+              />
+              <MapContainer style={{height: '30vh'}} center={{lat: this.state.position.lat, lng: this.state.position.lon}}
+                events={this.state.pins} selectedEvent={this.state.selectedEvent} />
+            </div>
+          )
+        }
+        })
+       }
+       </article>
           <div id='map-holder'>
             <aside className='sticky'>
-            <MapContainer style={{height: '94vh'}}  events={this.state.data} />
+              <MapContainer style={{height: '94vh'}}
+                center={{lat: this.state.position.lat, lng: this.state.position.lon}}
+                events={this.state.pins} selectedEvent={this.state.selectedEvent}/>
             </aside>
           </div>
         </div>
         <footer>
-            <ul className='footer-menu'>
-              <li className = 'footer-menu-element'>
-                About
-              </li>
-              <li className = 'footer-menu-element'>
-                Contact Us
-              </li>
-              <li className = 'footer-menu-element last'>
-                Disclaimer
-              </li>
-            </ul>
-          </footer>
-        </div>
-      );
-    }
+          <ul className='footer-menu'>
+            <li className = 'footer-menu-element'>
+              About
+            </li>
+            <li className = 'footer-menu-element'>
+              Contact Us
+            </li>
+            <li className = 'footer-menu-element last'>
+              Disclaimer
+            </li>
+          </ul>
+        </footer>
+      </div>
+    );
   }
-  export default App;
+}
+export default App;
