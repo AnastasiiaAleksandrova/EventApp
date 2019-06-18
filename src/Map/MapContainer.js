@@ -40,6 +40,7 @@ export class MapContainer extends Component {
   }
 
   render() {
+    const {google} = this.props;
     let center = this.props.center;
   //  console.log(this.props);
     if (this.props.selectedEvent != null) {
@@ -76,7 +77,15 @@ export class MapContainer extends Component {
             }
           })
           }
-
+          <Marker
+            name={'Your position'}
+            onClick={this.onMarkerClick}
+            position={this.props.center}
+            icon={{
+              url: 'media/green.png',
+              scaledSize: new google.maps.Size(30,45),
+              }}
+           />
           <InfoWindow
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
