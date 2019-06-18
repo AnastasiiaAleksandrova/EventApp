@@ -66,8 +66,8 @@ export class MapContainer extends Component {
                   key={index}
                   position={{lat: el.lat, lng: el.lon}}
                   onClick={this.onMarkerClick}
-                  icon = {{
-                  url: "http://icons.iconarchive.com/icons/paomedia/small-n-flat/32/map-marker-icon.png"}}
+                  /*icon = {{
+                  url: "http://icons.iconarchive.com/icons/paomedia/small-n-flat/32/map-marker-icon.png"}}*/
                   name={el.address}
                 />
 

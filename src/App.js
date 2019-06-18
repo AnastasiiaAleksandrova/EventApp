@@ -109,7 +109,7 @@ class App extends Component {
     console.log(this.state);
   }
 
-  handleScroll() {
+  /*handleScroll() {
     if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
       console.log('load data')
       axios.get(`http://localhost:3001/api/?limit=${this.state.limit}&start=${this.state.start}&${this.state.filter_type}&${this.state.filter_lang}`)
@@ -122,7 +122,7 @@ class App extends Component {
         });
         console.log(this.state);
     }
-  }
+  }*/
 
   componentDidMount() {
     this.getPosition();

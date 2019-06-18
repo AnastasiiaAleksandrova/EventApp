@@ -98,7 +98,7 @@ function getNeededInfo(arr) {
           result.push(temp);
 
         }
-        console.log(result.img);
+        
         return result;
 }
 
