@@ -25,8 +25,8 @@ color: #b4c92b;
 
 #logo {
 position: absolute;
-top: 1em;
-left: 1em;
+top: 0.5em;
+left: 0.5em;
 font-family: 'Montserrat', sans-serif;
 font-size: 2em;
 font-weight: 600;
@@ -40,12 +40,12 @@ text-transform: lowercase;
 
 #sub-logo {
 position: absolute;
-top: 5em;
-left: 2.1em;
+top: 3.2em;
+left: 1.05em;
 font-family: 'Hind', serif;
 font-size: 1em;
 font-weight: 600;
 text-transform: uppercase;
-letter-spacing: 0.105em;
+letter-spacing: 0.108em;
 color: white;
 }

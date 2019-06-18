@@ -203,7 +203,7 @@ footer ul {
   font-weight: bold;
 }
 
-@media all and (min-device-width: 280px) and (max-device-width: 500px) {
+@media all and (min-device-width: 280px) and (max-device-width: 800px) {
   .App {
     /* overflow-x: hidden; */
   }
