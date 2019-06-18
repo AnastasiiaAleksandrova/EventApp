@@ -92,7 +92,7 @@ nav ul {
   display: block;
 }
 
-.by-type, .by-language {
+.by-type, .by-language, .by-distance {
   display: flex;
   /* display: grid;
   grid-template-rows: auto;
@@ -105,7 +105,7 @@ nav ul {
   margin-top: 20px;
 }
 
-.by-type-header, .by-language-header {
+.by-type-header, .by-language-header, .by-distance-header {
   margin: 0 20px;
   font-weight: 600;
   font-size: 40px;
@@ -212,7 +212,7 @@ footer ul {
     left: 0;
   }
 
-  .by-type, .by-language {
+  .by-type, .by-language, .by-distance {
     flex-wrap: wrap;
     justify-content: space-between;
   }

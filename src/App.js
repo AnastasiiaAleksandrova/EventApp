@@ -4,6 +4,24 @@ import Header from './Header/Header';
 import RadioInput from './RadioInput';
 import EventBox from './EventBox';
 import axios from 'axios';
+import {Link, DirectLink, Element, Events, animateScroll as scroll, scrollSpy, scroller} from 'react-scroll'
+
+window.onscroll = function() {
+  scrollFunction()
+};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 40 || document.documentElement.scrollTop > 40) {
+    document.getElementById("back-to-top").style.display = "block";
+  } else {
+    document.getElementById("back-to-top").style.display = "none";
+  }
+}
+
+function backtotopFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
 
 class App extends Component {
 
@@ -30,6 +48,7 @@ class App extends Component {
     this.handleScroll = this.handleScroll.bind(this);
     this.getPosition = this.getPosition.bind(this);
     this.handleEventClick= this.handleEventClick.bind(this);
+    this.scrollToTop = this.scrollToTop.bind(this); //scroller
   }
 
   getPosition() {
@@ -128,7 +147,15 @@ class App extends Component {
     this.getPosition();
     this.getEvents();
     this.getPins();
-    window.addEventListener('scroll', this.handleScroll)
+    window.addEventListener('scroll', this.handleScroll);
+    Events.scrollEvent.register('begin', function () {
+    });
+    Events.scrollEvent.register('end', function () {
+    });
+  }
+
+  scrollToTop() {
+    scroll.scrollToTop();
   }
 
   render() {
@@ -169,12 +196,10 @@ class App extends Component {
                         <label className='filter-button'>
                           <input type='radio' name='filter_type' value='tags_search=families' onChange={this.handleChange}/>
                           <span>Families</span>
-
                         </label>
                       </li>
                       <li>
                         <label className='filter-button'>
-
                           <input type='radio' name='filter_type' value='tags_search=games' onChange={this.handleChange}/>
                           <span>Games</span>
                         </label>
@@ -189,12 +214,6 @@ class App extends Component {
                         <label className='filter-button'>
                           <input type='radio' name='filter_type' value='tags_search=dance' onChange={this.handleChange}/>
                           <span>Dance</span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className='filter-button'>
-                          <input type='radio' name='filter_type' value='tags_search=families' onChange={this.handleChange}/>
-                          <span>Families</span>
                         </label>
                       </li>
                       <li>
@@ -246,7 +265,9 @@ class App extends Component {
                         </label>
                       </li>
                     </div>
-
+                    <div className='by-distance-header'>
+                      <i class="fas fa-road"></i>
+                    </div>
                     <div className='by-distance'>
                       <li>
                         <label className='filter-button'>
@@ -348,6 +369,9 @@ class App extends Component {
             </li>
           </ul>
         </footer>
+        <button id="back-to-top" onClick={this.scrollToTop} style={{display: 'none', position: 'fixed', bottom: '20em', left: '20em'}}>
+          Press
+        </button>
       </div>
     );
   }

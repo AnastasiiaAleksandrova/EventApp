@@ -7,7 +7,7 @@ z-index: -2;
 }
 
 header {
-height: 40vh;
+height: 30vh;
 background-position: left bottom;
 background: no-repeat;
 background-size: cover;
@@ -46,6 +46,6 @@ font-family: 'Hind', serif;
 font-size: 1em;
 font-weight: 600;
 text-transform: uppercase;
-letter-spacing: 0.07em;
+letter-spacing: 0.105em;
 color: white;
 }
