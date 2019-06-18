@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
+import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import './Map.css';
-import CurrentLocation from './CurrentLocation';
 
-class MapContainer extends Component {
+export class MapContainer extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -12,14 +12,15 @@ class MapContainer extends Component {
       activeMarker: {},
       selectedPlace: {},
       streetViewControl: true,
-      names: []
+
     }
-    // binding this to event-handler functions
+
     this.onMarkerClick = this.onMarkerClick.bind(this);
     this.onMapClick = this.onMapClick.bind(this);
   }
 
   onMarkerClick = (props, marker, e) => {
+    console.log('maprker is clicked!');
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
@@ -27,7 +28,9 @@ class MapContainer extends Component {
     });
   }
 
+
   onMapClick = (props) => {
+    console.log('map is clicked!');
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
@@ -37,33 +40,43 @@ class MapContainer extends Component {
   }
 
   render() {
+    let center = this.props.center;
+  //  console.log(this.props);
+    if (this.props.selectedEvent != null) {
+      center = {lat: this.props.selectedEvent.location.lat, lng: this.props.selectedEvent.location.lon};
+    }
+
     return (
       <div className='map-wrapper' style={this.props.style}>
-        <CurrentLocation
-          centerAroundCurrentLocation
-          google={this.props.google}
-          onClick={this.onMapClicked}
-        >
-        {this.props.events.map((el, index) => {
-        /*const unique = [...new Set(this.props.events.map(item => item.location.address.street_address))];
-        if (unique) {
-          this.state.names.push(el.name.fi);
-        }
+      <Map google={this.props.google} zoom={14} initialCenter={this.props.center} center={center} style={this.props.style} onClick={this.onMapClick} >
+          {this.props.events.map((el, index) => {
+            if (center.lat === el.lat && center.lng === el.lon) {
+              return (
+                <Marker
+                  key={index}
+                  position={{lat: el.lat, lng: el.lon}}
+                  onClick={this.onMarkerClick}
+                  icon = {{
+                  url: "http://maps.google.com/mapfiles/ms/icons/blue.png"}}
+                  name={el.address}/>)
+            } else {
+              return (
 
-*/
-        
-        return(
+                <Marker
+                  key={index}
+                  position={{lat: el.lat, lng: el.lon}}
+                  onClick={this.onMarkerClick}
+                  icon = {{
+                  url: "http://icons.iconarchive.com/icons/paomedia/small-n-flat/32/map-marker-icon.png"}}
+                  name={el.address}
+                />
 
-          <Marker
-            key={index}
-            onClick={this.onMarkerClick}
-            position = {{lat: el.location.lat, lng: el.location.lon}}
-            name={el.location.address.street_address}
-                    />
+              );
 
-        );
+            }
+          })
+          }
 
-      })}
           <InfoWindow
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
@@ -73,7 +86,8 @@ class MapContainer extends Component {
               <h4>{this.state.selectedPlace.name}</h4>
             </div>
           </InfoWindow>
-        </CurrentLocation>
+
+      </Map>
       </div>
     );
   }
@@ -81,4 +95,4 @@ class MapContainer extends Component {
 
 export default GoogleApiWrapper({
   apiKey: (process.env.REACT_APP_GOOGLE_API_KEY)
-})(MapContainer);
+})(MapContainer)
