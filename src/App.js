@@ -129,7 +129,6 @@ class App extends Component {
     });
     console.log(this.state);
   }
-
   /*handleScroll() {
     if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
       console.log('load data')
