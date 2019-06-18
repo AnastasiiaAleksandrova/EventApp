@@ -103,7 +103,9 @@ class App extends Component {
   }
 
   handleScroll() {
-    if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
+    console.log(document.documentElement.offsetHeight);
+    console.log(window.innerHeight + document.documentElement.scrollTop - 32);
+    if (window.innerHeight + document.documentElement.scrollTop - 32 === document.documentElement.offsetHeight) {
       console.log('load data')
       axios.get(`http://localhost:3001/api/?limit=${this.state.limit}&start=${this.state.start}&${this.state.filter_type}&${this.state.filter_lang}&distance_filter=${this.state.position.lat},${this.state.position.lon},${this.state.filter_distance}`)
         .then(result => {
