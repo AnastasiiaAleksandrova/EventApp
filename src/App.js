@@ -121,7 +121,7 @@ class App extends Component {
     });
     console.log(this.state);
   }
-  
+
 
   componentDidMount() {
     this.getPosition();
@@ -336,6 +336,9 @@ class App extends Component {
           </div>
         </div>
         <footer>
+          <div id='back-to-top_placeholder'>
+            <i id="back-to-top" class="fas fa-arrow-alt-circle-up" onClick={this.scrollToTop}></i>
+          </div>
           <ul className='footer-menu'>
             <li className = 'footer-menu-element'>
               About
@@ -348,9 +351,6 @@ class App extends Component {
             </li>
           </ul>
         </footer>
-        <div id='back-to-top_placeholder'>
-          <i id="back-to-top" class="fas fa-arrow-alt-circle-up" onClick={this.scrollToTop}></i>
-        </div>
       </div>
     );
   }
