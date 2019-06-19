@@ -15,10 +15,12 @@ html, body, #root, .App {
 }
 
 .map-events-holder {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1em minmax(0, 40em) 1fr;
   grid-template-rows: 1em auto;
   background-color: #fff;
+  /* z-index: -2; */
 }
 
 header, nav, article, aside {
@@ -160,7 +162,7 @@ nav ul {
 
 article {
   grid-column: 1/2;
-  /*1/5*/
+  width: 100%;
   grid-row: 2/3;
   min-height: 100vh;
   background-color: white;
@@ -175,6 +177,23 @@ aside {
   margin-right: 1em;
 }
 
+#back-to-top_placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 0;
+  bottom: 4.8vh;
+}
+
+#back-to-top{
+  display: none;
+  position: relative;
+  color: #292929;
+  font-size: 4em;
+}
+
 footer {
   position: fixed;
   bottom: 0;
@@ -184,6 +203,8 @@ footer {
   margin-top: 1em;
   background-color: #292929;
   color: #fff;
+  z-index: 1;
+
 }
 
 footer ul {
@@ -203,7 +224,7 @@ footer ul {
   font-weight: bold;
 }
 
-@media all and (min-device-width: 280px) and (max-device-width: 800px) {
+@media all and (min-device-width: 280px) and (max-device-width: 900px) and (orientation: portrait) {
   .App {
     /* overflow-x: hidden; */
   }
@@ -219,5 +240,19 @@ footer ul {
 
   footer{
     margin-top: 0;
+  }
+
+  #back-to-top_placeholder {
+    bottom: 5vh;
+  }
+
+  #back-to-top{
+    font-size: 4em;
+  }
+}
+
+@media all and (min-device-width: 280px) and (max-device-width: 900px) and (orientation: landscape) {
+  #back-to-top_placeholder {
+    bottom: 9vh;
   }
 }

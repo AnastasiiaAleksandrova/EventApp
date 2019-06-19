@@ -3,7 +3,7 @@ display: block;
 position: -webkit-sticky;
 position: sticky;
 top: 0;
-z-index: -2;
+z-index: -999;
 }
 
 header {
@@ -26,7 +26,7 @@ color: #b4c92b;
 #logo {
 position: absolute;
 top: 0.5em;
-left: 0.5em;
+left: 1.5em;
 font-family: 'Montserrat', sans-serif;
 font-size: 2em;
 font-weight: 600;
@@ -41,7 +41,7 @@ text-transform: lowercase;
 #sub-logo {
 position: absolute;
 top: 3.2em;
-left: 1.05em;
+left: 3.06em;
 font-family: 'Hind', serif;
 font-size: 1em;
 font-weight: 600;

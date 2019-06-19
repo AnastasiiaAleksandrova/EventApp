@@ -227,7 +227,6 @@ class App extends Component {
                           <span>Museums</span>
                         </label>
                       </li>
-
                     </div>
                     <div className='by-language-header'>
                       <i className="fas fa-language"></i>
@@ -295,52 +294,52 @@ class App extends Component {
         </nav>
         <div className='map-events-holder'>
           <article>
-          {this.state.data.map((el, index) => {
-        if (el.dates) {
-          return(
-            <div className="complex-box">
-              <EventBox
-                key={index}
-                id={index}
-                name={el.name.fi}
-                address={el.location.address.street_address}
-                postcode={el.location.address.postal_code}
-                city={el.location.address.locality}
-                intro={el.description.intro}
-                image={el.img}
-                date={el.dates.slice(0,10).split("-").reverse().join(".")}
-                time={el.dates.slice(11,16).split("-").reverse().join("/")}
-                url={el.url}
-                onClick={this.handleEventClick}
-              />
-              <MapContainer style={{height: '30vh'}} center={{lat: this.state.position.lat, lng: this.state.position.lon}}
-                events={this.state.pins} selectedEvent={this.state.selectedEvent}
-              />
-              </div>
-            )
-        } else {
-          return(
-            <div className="complex-box">
-              <EventBox
-                key={index}
-                id={index}
-                name={el.name.fi}
-                address={el.location.address.street_address}
-                postcode={el.location.address.postal_code}
-                city={el.location.address.locality}
-                intro={el.description.intro}
-                image={el.img}
-                url={el.url}
-                onClick={this.handleEventClick}
-              />
-              <MapContainer style={{height: '30vh'}} center={{lat: this.state.position.lat, lng: this.state.position.lon}}
-                events={this.state.pins} selectedEvent={this.state.selectedEvent} />
-            </div>
-          )
-        }
-        })
-       }
-       </article>
+            {this.state.data.map((el, index) => {
+              if (el.dates) {
+                return(
+                  <div className="complex-box">
+                    <EventBox
+                      key={index}
+                      id={index}
+                      name={el.name.fi}
+                      address={el.location.address.street_address}
+                      postcode={el.location.address.postal_code}
+                      city={el.location.address.locality}
+                      intro={el.description.intro}
+                      image={el.img}
+                      date={el.dates.slice(0,10).split("-").reverse().join(".")}
+                      time={el.dates.slice(11,16).split("-").reverse().join("/")}
+                      url={el.url}
+                      onClick={this.handleEventClick}
+                    />
+                    <MapContainer style={{height: '30vh'}} center={{lat: this.state.position.lat, lng: this.state.position.lon}}
+                    events={this.state.pins} selectedEvent={this.state.selectedEvent}
+                    />
+                  </div>
+                )
+              }else{
+                return(
+                  <div className="complex-box">
+                    <EventBox
+                      key={index}
+                      id={index}
+                      name={el.name.fi}
+                      address={el.location.address.street_address}
+                      postcode={el.location.address.postal_code}
+                      city={el.location.address.locality}
+                      intro={el.description.intro}
+                      image={el.img}
+                      url={el.url}
+                      onClick={this.handleEventClick}
+                    />
+                    <MapContainer style={{height: '30vh'}} center={{lat: this.state.position.lat, lng: this.state.position.lon}}
+                    events={this.state.pins} selectedEvent={this.state.selectedEvent}
+                    />
+                  </div>
+                )
+              }
+            })}
+          </article>
           <div id='map-holder'>
             <aside className='sticky'>
               <MapContainer style={{height: '94vh'}}
@@ -362,9 +361,9 @@ class App extends Component {
             </li>
           </ul>
         </footer>
-        <button id="back-to-top" onClick={this.scrollToTop} style={{display: 'none', position: 'fixed', bottom: '20em', left: '20em'}}>
-          Press
-        </button>
+        <div id='back-to-top_placeholder'>
+          <i id="back-to-top" class="fas fa-arrow-alt-circle-up" onClick={this.scrollToTop}></i>
+        </div>
       </div>
     );
   }
