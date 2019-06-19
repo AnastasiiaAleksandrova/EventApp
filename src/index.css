@@ -181,10 +181,10 @@ aside {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
+  position: relative;
+  top: 0;
   width: 100%;
   height: 0;
-  bottom: 4.8vh;
 }
 
 #back-to-top{
@@ -248,11 +248,5 @@ footer ul {
 
   #back-to-top{
     font-size: 4em;
-  }
-}
-
-@media all and (min-device-width: 280px) and (max-device-width: 900px) and (orientation: landscape) {
-  #back-to-top_placeholder {
-    bottom: 9vh;
   }
 }
