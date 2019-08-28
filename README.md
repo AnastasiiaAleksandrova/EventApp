@@ -7,9 +7,9 @@ Technologies used: React, Node.js, Express.js.
 The app gets data from MyHelsinki open API and Google Map API.
 
 <div align="center">
-    <img src="/screenshots/screen1.PNG" width="800px"</img> 
+    <img alt="screenshot" src="/screenshots/screen1.PNG" width="900px"</img> 
 </div>
 
 <div align="center">
-    <img src="/screenshots/screen2.PNG" width="800px"</img> 
+    <img alt="screenshot" src="/screenshots/screen2.PNG" width="900px"</img> 
 </div>
