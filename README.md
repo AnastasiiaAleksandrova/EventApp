@@ -1,4 +1,4 @@
-This an application showing upcoming events in the city of Helsinki.
+An application showing upcoming events in the city of Helsinki.
 
 The app was built by a team of 4 students of Business College Helsinki: Anastasiia Aleksandrova, Rostislav Petrenko, Konstantin Veselovskii and Valentina Jakobson.
 
